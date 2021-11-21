@@ -1,0 +1,29 @@
+cap nhat don hang (ĐỐI TÁC VS TÀI XẾ CẬP NHẬT TÌNH TRẠNG ĐƠN HÀNG)
+lost update
+dirty read
+
+mua hang
+lost update
+dirty read
+
+cap nhat so luong
+dirty read
+
+tai xe xem don hang (COI CÁC ĐƠN HÀNG THUỘC PHẠM VI HOẠT ĐỘNG CỦA TÀI XẾ)
+dirty read
+lost update
+
+khach hang xem danh sach doi tac (XEM ĐỐI TÁC NÀO CÒN HỢP ĐỒNG CÒN HIỆU LỰC, LẤY TG HIỆU LỰC SO VỚI HIỆN TẠI)
+dirty read
+
+nhan vien xem hop dong cua doi tac (NV HỎI ĐỐI TÁC MUỐN GIA HẠN TIẾP KHUM => COI TẤT CẢ HỢP ĐỒNG CỦA ĐỐI TÁC, CẬP NHẬT THỜI GIAN HIỆU LỰC (PHẢI SAU TG HIỆU LỰC CŨ) VÀ % HOA HỒNG CỦA HỢP ĐỒNG)
+lost update
+dirty read
+
+theo doi don hang (TÀI XẾ XEM ĐƠN HÀNG MÀ MÌNH ĐÃ NHẬN (CMND) VÀ XEM ĐƯỢC ĐỐI TÁC ĐỂ BIẾT ĐỊA CHỈ LẤY HÀNG AKA ĐCKD, KHÁCH HÀNG THEO DÕI ĐƠN MÌNH ĐẶT: ĐƠN HÀNG + GHI NHẬN CỦA ĐƠN HÀNG)
+dirty read
+unrepeatable read
+
+//một đơn hàng thuộc về một đối tác
+
+
