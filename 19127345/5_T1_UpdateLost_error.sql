@@ -56,7 +56,7 @@ BEGIN
 	COMMIT TRAN
 END
 GO
-SELECT * FROM dbo.GHINHAN
+SELECT * FROM dbo.QUANLYKHO
 EXEC dbo.INSERT_GHINHAN @MADH = 'HD0000000002',  -- char(12)
                         @MASP = 'SP0000000001',  -- char(12)
                         @SOLUONG = 500 -- int
