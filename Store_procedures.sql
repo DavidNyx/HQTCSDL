@@ -317,6 +317,7 @@ BEGIN
 		ROLLBACK TRAN
 		RAISERROR(N'Sản phẩm không tồn tại.', 16, 1)
 	END
+
 	INSERT dbo.GHINHAN
 	(
 	    MASP,
@@ -331,9 +332,23 @@ BEGIN
 
 	DECLARE @GIA FLOAT
 	SET @GIA = (SELECT GIA FROM dbo.SANPHAM WHERE MASP = @MASP)
+
 	UPDATE dbo.DONHANG
 	SET SLSP = SLSP + @SOLUONG, PHISP = PHISP + @SOLUONG * @GIA
 	WHERE MADH = @MADH
+
+	UPDATE dbo.QUANLYKHO
+	SET SLSP = dbo.QUANLYKHO.SLSP - @SOLUONG
+	FROM dbo.DONHANG
+	WHERE MACN = (SELECT MIN(MACN) FROM dbo.QUANLYKHO WHERE  dbo.QUANLYKHO.MASP = @MASP AND dbo.QUANLYKHO.MADOITAC = dbo.DONHANG.MADOITAC AND dbo.QUANLYKHO.SLSP > @SOLUONG)
+	AND dbo.DONHANG.MADH = @MADH AND dbo.QUANLYKHO.MADOITAC = dbo.DONHANG.MADOITAC AND dbo.QUANLYKHO.MASP = @MASP
+
+	IF NOT EXISTS(SELECT dbo.QUANLYKHO.*FROM dbo.QUANLYKHO, dbo.DONHANG WHERE dbo.DONHANG.MADH = @MADH AND dbo.QUANLYKHO.MADOITAC = dbo.DONHANG.MADOITAC
+	AND dbo.QUANLYKHO.MASP = @MASP AND dbo.QUANLYKHO.SLSP > @SOLUONG)
+	BEGIN
+		ROLLBACK TRAN
+		RAISERROR(N'Số lượng hàng trong kho không đủ.', 16, 1)
+	END
 	COMMIT TRAN
 END
 GO
@@ -341,6 +356,12 @@ GO
 EXEC dbo.INSERT_DONHANG @MADH = 'HD0000000001',        -- char(12)
                        @MADT = 'DT0000000001',        -- char(12)
                        @MAKH = 'KH0000000001',        -- char(12)
+                       @HTTHANHTOAN = N'Thẻ' -- nvarchar(20)
+GO
+
+EXEC dbo.INSERT_DONHANG @MADH = 'HD0000000002',        -- char(12)
+                       @MADT = 'DT0000000002',        -- char(12)
+                       @MAKH = 'KH0000000002',        -- char(12)
                        @HTTHANHTOAN = N'Thẻ' -- nvarchar(20)
 GO
 
@@ -353,3 +374,10 @@ EXEC dbo.INSERT_GHINHAN @MADH = 'HD0000000001',  -- char(12)
                         @MASP = 'SP0000000002',  -- char(12)
                         @SOLUONG = 1 -- int
 GO
+
+EXEC dbo.INSERT_GHINHAN @MADH = 'HD0000000002',  -- char(12)
+                        @MASP = 'SP0000000001',  -- char(12)
+                        @SOLUONG = 100 -- int
+GO
+
+DROP PROC dbo.INSERT_GHINHAN

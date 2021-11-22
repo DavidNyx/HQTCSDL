@@ -121,10 +121,10 @@ create table QUANLYKHO (
    MADOITAC             char(12)             not null,
    MACN                 INT                  not null,
    MASP                 char(12)             not null,
-   SLSP                 int                  null,
+   SLSP                 int                  NOT NULL,
    constraint PK_QUANLYKHO primary key (MADOITAC, MACN, MASP)
 )
-go
+GO
 
 /*==============================================================*/
 /* Table: SANPHAM                                               */
