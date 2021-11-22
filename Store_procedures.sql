@@ -61,14 +61,15 @@ BEGIN
             ROLLBACK TRAN
             raiserror(N'Sản phẩm không tồn tại', 16, 1)
         END
-        IF NOT EXISTS(SELECT * FROM dbo.LOAISP WHERE MALOAI = @MALOAI)
+        UPDATE dbo.SANPHAM
+		SET MALOAI = @MALOAI, TENSP = @TENSP, MOTA = @MOTA, GIA = @GIA
+		WHERE MASP = @MASP
+		WAITFOR DELAY '00:00:05'
+		IF NOT EXISTS(SELECT * FROM dbo.LOAISP WHERE MALOAI = @MALOAI)
         BEGIN
             ROLLBACK TRAN
             raiserror(N'Loại sản phẩm không tồn tại', 16, 1)
         END
-        UPDATE dbo.SANPHAM
-		SET MALOAI = @MALOAI, TENSP = @TENSP, MOTA = @MOTA, GIA = @GIA
-		WHERE MASP = @MASP
     COMMIT TRAN
 END
 GO
