@@ -10,24 +10,30 @@ BEGIN
         IF NOT EXISTS(SELECT * FROM dbo.SANPHAM WHERE MASP = @MASP)
         BEGIN
             ROLLBACK TRAN
-            raiserror(N'Sản phẩm không tồn tại', 16, 1)
+            RAISERROR(N'Sản phẩm không tồn tại', 16, 1)
         END
+
+		WAITFOR DELAY '00:00:05'
         UPDATE dbo.SANPHAM
 		SET MALOAI = @MALOAI, TENSP = @TENSP, MOTA = @MOTA, GIA = @GIA
 		WHERE MASP = @MASP
-		WAITFOR DELAY '00:00:05'
+
 		IF NOT EXISTS(SELECT * FROM dbo.LOAISP WHERE MALOAI = @MALOAI)
         BEGIN
             ROLLBACK TRAN
-            raiserror(N'Loại sản phẩm không tồn tại', 16, 1)
+            RAISERROR(N'Loại sản phẩm không tồn tại', 16, 1)
         END
     COMMIT TRAN
 END
 GO
 
+DROP PROCEDURE dbo.CAPNHATSP
+GO
+
 EXEC dbo.CAPNHATSP @MASP = 'SP0000000001',   -- char(12)
-                @MALOAI = 'LSP000000001', -- char(12)
+                @MALOAI = 'LSP000000002', -- char(12)
                 @TENSP = N'Bánh bò', -- nvarchar(50)
                 @MOTA = N'Thơm ngon.',  -- nvarchar(250)
-                @GIA = 3000.0    -- float
+                @GIA = 5000.0    -- float
 GO
+
