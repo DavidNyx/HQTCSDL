@@ -74,7 +74,7 @@ create table HOPDONG (
    MADOITAC             char(12)             not null,
    MATHUE               char(12)             NOT NULL,
    SOCNDK               int                  null,
-   TGHIEULUC            date             null,
+   TGHIEULUC            date                 null,
    PHANTRAMHOAHONG      float                null,
    PHIHOAHONG           float                null,
    constraint PK_HOPDONG primary key (MADOITAC, MATHUE)
