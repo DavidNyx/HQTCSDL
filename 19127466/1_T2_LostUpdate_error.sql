@@ -1,4 +1,4 @@
-﻿CREATE PROC CAPNHATSP
+﻿CREATE PROC CAPNHATSP1
     @MASP CHAR(12),
     @MALOAI CHAR(12),
     @TENSP NVARCHAR(50),
@@ -12,7 +12,6 @@ BEGIN
             ROLLBACK TRAN
             RAISERROR(N'Sản phẩm không tồn tại', 16, 1)
         END
-		WAITFOR DELAY '00:00:05'
 
         UPDATE dbo.SANPHAM
 		SET MALOAI = @MALOAI, TENSP = @TENSP, MOTA = @MOTA, GIA = @GIA
@@ -26,9 +25,12 @@ BEGIN
     COMMIT TRAN
 END
 GO
+DROP PROCEDURE dbo.CAPNHATSP1
+GO 
 SELECT * FROM dbo.SANPHAM
-EXEC dbo.CAPNHATSP @MASP = 'SP0000000001',   -- char(12)
+GO 
+EXEC dbo.CAPNHATSP1 @MASP = 'SP0000000001',   -- char(12)
                 @MALOAI = 'LSP000000004', -- char(12)
                 @TENSP = N'Bánh bò', -- nvarchar(50)
                 @MOTA = N'Thơm ngon.',  -- nvarchar(250)
-                @GIA = 5000.0    -- float
+                @GIA = 3000.0    -- float
