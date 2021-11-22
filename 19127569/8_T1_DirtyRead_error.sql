@@ -68,4 +68,6 @@ EXEC dbo.INSERT_GHINHAN @MADH = 'HD0000000002',  -- char(12)
                         @SOLUONG = 600 -- int
 GO
 
+DROP PROCEDURE dbo.INSERT_GHINHAN
+
 DELETE dbo.GHINHAN

@@ -30,5 +30,7 @@ GO
 
 EXEC dbo.UPDATE_HOPDONG @MADOITAC = 'DT0000000001',       -- char(12)
                         @MATHUE = 'MT0000000001',         -- char(12)
-                        @DATE = '2021-11-20', -- date
+                        @DATE = '2021-11-10', -- date
                         @HOAHONG = 6        -- float
+
+DROP PROCEDURE dbo.UPDATE_HOPDONG

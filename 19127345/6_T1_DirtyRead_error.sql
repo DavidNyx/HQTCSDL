@@ -37,3 +37,5 @@ EXEC dbo.UPDATE_SOLUONG @MADT = 'DT0000000001',     -- char(12)
                         @MACN = 1,      -- int
                         @MASP = 'SP0000000005',     -- char(12)
                         @LUONG_TANG = -600 -- int
+
+DROP PROCEDURE dbo.UPDATE_SOLUONG
