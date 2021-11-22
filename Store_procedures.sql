@@ -87,13 +87,8 @@ BEGIN
             ROLLBACK TRAN
             raiserror(N'Sản phẩm không tồn tại', 16, 1)
         END
-        DELETE dbo.SANPHAM WHERE MASP = @MASP
-		IF NOT EXISTS(SELECT * FROM dbo.CHINHANH WHERE MACN = @MACN)
-		BEGIN
-			ROLLBACK TRAN
-			RAISERROR(N'Chi nhánh không tồn tại', 16, 1)
-		END
 		DELETE dbo.QUANLYKHO WHERE dbo.QUANLYKHO.MASP = @MASP AND dbo.QUANLYKHO.MADOITAC = @MADT AND dbo.QUANLYKHO.MACN = @MACN
+        DELETE dbo.SANPHAM WHERE MASP = @MASP
     COMMIT TRAN
 END
 GO
