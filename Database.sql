@@ -45,7 +45,7 @@ go
 create table DONHANG (
    MADH                 char(12)             not null,
    MADOITAC             char(12)             not null,
-   CMND                 char(12)             not null,
+   CMND                 char(12)             null,
    MAKH                 char(12)             not null,
    SLSP                 int                  null,
    PHISP                float                null,
