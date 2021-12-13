@@ -1,0 +1,35 @@
+D:\HQT\HQT Project\HQT Project\bin\Debug\HQT Project.exe.config
+D:\HQT\HQT Project\HQT Project\bin\Debug\HQT Project.exe
+D:\HQT\HQT Project\HQT Project\bin\Debug\HQT Project.pdb
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT Project.csproj.AssemblyReference.cache
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.Properties.Resources.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT Project.csproj.GenerateResource.cache
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT Project.csproj.CoreCompileInputs.cache
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT Project.exe
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT Project.pdb
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.themsp.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.succesfull.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.capnhatsp.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.xoasp.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.saichinhanh.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.capnhatsl.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.saidoitac.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.saispcapnhatsl.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.saisp.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.saisl.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.capnhatdonhang.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.spdatontai.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.sailoaisp.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.saidonhang.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.saitrangthai.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.taixetheodoidonhang.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.saicmnd.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.theodoidonhang.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.saicmndmakh.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.muahang_taohd.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.trungdonhang.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.saikhachhang.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.muahang_taoghinhan.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.saisoluongtrongkho.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.xemhopdong.resources
+D:\HQT\HQT Project\HQT Project\obj\Debug\HQT_Project.vaitro.resources

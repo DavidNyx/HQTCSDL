@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AB363212-4361-4EDC-9672-4CCA3890CAD5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>HQT_Project</RootNamespace>
+    <AssemblyName>HQT Project</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="capnhatdonhang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="capnhatdonhang.Designer.cs">
+      <DependentUpon>capnhatdonhang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="muahang_taoghinhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="muahang_taoghinhan.Designer.cs">
+      <DependentUpon>muahang_taoghinhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="muahang_taohd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="muahang_taohd.Designer.cs">
+      <DependentUpon>muahang_taohd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="saicmnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="saicmnd.Designer.cs">
+      <DependentUpon>saicmnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="saicmndmakh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="saicmndmakh.Designer.cs">
+      <DependentUpon>saicmndmakh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="saidonhang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="saidonhang.Designer.cs">
+      <DependentUpon>saidonhang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="saikhachhang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="saikhachhang.Designer.cs">
+      <DependentUpon>saikhachhang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="saisl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="saisl.Designer.cs">
+      <DependentUpon>saisl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="saisoluongtrongkho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="saisoluongtrongkho.Designer.cs">
+      <DependentUpon>saisoluongtrongkho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="saispcapnhatsl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="saispcapnhatsl.Designer.cs">
+      <DependentUpon>saispcapnhatsl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="saitrangthai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="saitrangthai.Designer.cs">
+      <DependentUpon>saitrangthai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="themsp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="themsp.Designer.cs">
+      <DependentUpon>themsp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="succesfull.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="succesfull.Designer.cs">
+      <DependentUpon>succesfull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="capnhatsp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="capnhatsp.Designer.cs">
+      <DependentUpon>capnhatsp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="spdatontai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="spdatontai.Designer.cs">
+      <DependentUpon>spdatontai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sailoaisp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sailoaisp.Designer.cs">
+      <DependentUpon>sailoaisp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="saisp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="saisp.Designer.cs">
+      <DependentUpon>saisp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="taixetheodoidonhang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="taixetheodoidonhang.Designer.cs">
+      <DependentUpon>taixetheodoidonhang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="theodoidonhang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="theodoidonhang.Designer.cs">
+      <DependentUpon>theodoidonhang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="trungdonhang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="trungdonhang.Designer.cs">
+      <DependentUpon>trungdonhang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vaitro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vaitro.Designer.cs">
+      <DependentUpon>vaitro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="xemhopdong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="xemhopdong.Designer.cs">
+      <DependentUpon>xemhopdong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="xoasp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="xoasp.Designer.cs">
+      <DependentUpon>xoasp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="saichinhanh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="saichinhanh.Designer.cs">
+      <DependentUpon>saichinhanh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="capnhatsl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="capnhatsl.Designer.cs">
+      <DependentUpon>capnhatsl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="saidoitac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="saidoitac.Designer.cs">
+      <DependentUpon>saidoitac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="capnhatdonhang.resx">
+      <DependentUpon>capnhatdonhang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="muahang_taoghinhan.resx">
+      <DependentUpon>muahang_taoghinhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="muahang_taohd.resx">
+      <DependentUpon>muahang_taohd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="saicmnd.resx">
+      <DependentUpon>saicmnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="saicmndmakh.resx">
+      <DependentUpon>saicmndmakh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="saidonhang.resx">
+      <DependentUpon>saidonhang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="saikhachhang.resx">
+      <DependentUpon>saikhachhang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="saisl.resx">
+      <DependentUpon>saisl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="saisoluongtrongkho.resx">
+      <DependentUpon>saisoluongtrongkho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="saispcapnhatsl.resx">
+      <DependentUpon>saispcapnhatsl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="saitrangthai.resx">
+      <DependentUpon>saitrangthai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="taixetheodoidonhang.resx">
+      <DependentUpon>taixetheodoidonhang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="themsp.resx">
+      <DependentUpon>themsp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="succesfull.resx">
+      <DependentUpon>succesfull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="capnhatsp.resx">
+      <DependentUpon>capnhatsp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="spdatontai.resx">
+      <DependentUpon>spdatontai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sailoaisp.resx">
+      <DependentUpon>sailoaisp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="saisp.resx">
+      <DependentUpon>saisp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="theodoidonhang.resx">
+      <DependentUpon>theodoidonhang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="trungdonhang.resx">
+      <DependentUpon>trungdonhang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vaitro.resx">
+      <DependentUpon>vaitro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="xemhopdong.resx">
+      <DependentUpon>xemhopdong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="xoasp.resx">
+      <DependentUpon>xoasp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="saichinhanh.resx">
+      <DependentUpon>saichinhanh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="capnhatsl.resx">
+      <DependentUpon>capnhatsl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="saidoitac.resx">
+      <DependentUpon>saidoitac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
