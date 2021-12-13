@@ -24,5 +24,21 @@ namespace HQT_Project
             buy.ShowDialog();
             this.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            doitacconfirm doitac = new doitacconfirm();
+            doitac.ShowDialog();
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            taixeconfirm taixe = new taixeconfirm();
+            taixe.ShowDialog();
+            this.Close();
+        }
     }
 }
