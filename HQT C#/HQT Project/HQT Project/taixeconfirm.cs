@@ -36,7 +36,7 @@ namespace HQT_Project
                     else
                     {
                         this.Hide();
-                        taixetheodoidonhang theodoi = new taixetheodoidonhang();
+                        menutaixe theodoi = new menutaixe();
                         theodoi.ShowDialog();
                         this.Close();
                     }

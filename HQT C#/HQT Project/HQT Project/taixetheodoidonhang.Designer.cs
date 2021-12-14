@@ -71,6 +71,7 @@ namespace HQT_Project
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(222, 20);
             this.textBox1.TabIndex = 27;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -89,6 +90,7 @@ namespace HQT_Project
             this.button2.TabIndex = 35;
             this.button2.Text = "Xem đơn hàng";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // taixetheodoidonhang
             // 

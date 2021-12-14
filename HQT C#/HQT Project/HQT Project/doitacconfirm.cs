@@ -42,7 +42,7 @@ namespace HQT_Project
                     else
                     {
                         this.Hide();
-                        themsp them = new themsp();
+                        menudoitac them = new menudoitac();
                         them.ShowDialog();
                         this.Close();
                     }    

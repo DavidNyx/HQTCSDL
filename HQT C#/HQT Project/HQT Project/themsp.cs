@@ -40,12 +40,28 @@ namespace HQT_Project
         {
             using (SqlConnection sqlConn = new SqlConnection(connString))
             {
-                sqlConn.Open();
-                SqlDataAdapter adapt = new SqlDataAdapter("SELECT * from sanpham", sqlConn);
-                DataTable table = new DataTable();
-                adapt.Fill(table);
-                dataGridView1.DataSource = new BindingSource(table, null);
-                sqlConn.Close();
+                if (textBox7.Text != "") {
+                    SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT madoitac from doitac where doitac.madoitac = '" + textBox7.Text + "' ", sqlConn);
+                    DataTable table1 = new DataTable();
+                    adapt1.Fill(table1);
+                    if (table1.Rows.Count < 1)
+                    {
+                        MessageBox.Show("Mã đối tác không tồn tại!");
+                    }
+                    else
+                    {
+                        sqlConn.Open();
+                        SqlDataAdapter adapt = new SqlDataAdapter("SELECT DISTINCT sanpham.masp, quanlykho.macn, sanpham.tensp, sanpham.maloai, sanpham.mota, sanpham.gia from sanpham, quanlykho where quanlykho.madoitac = '" + textBox7.Text + "'", sqlConn);
+                        DataTable table = new DataTable();
+                        adapt.Fill(table);
+                        dataGridView1.DataSource = new BindingSource(table, null);
+                        sqlConn.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng nhập mã đối tác để được coi danh sách sản phẩm!");
+                }
             }
         }
 
@@ -61,12 +77,12 @@ namespace HQT_Project
                 if (textBox1.Text != "" || textBox2.Text != "" || textBox3.Text != "" || textBox4.Text != "" || textBox5.Text != "")
                 {
                     //CHECK
-                    SqlDataAdapter adapt = new SqlDataAdapter("SELECT SANPHAM.MASP from sanpham where MASP = '" + textBox1.Text + "' ", sqlConn);
+                    SqlDataAdapter adapt = new SqlDataAdapter("SELECT * from QUANLYKHO where QUANLYKHO.MASP = '" + textBox1.Text + "' AND QUANLYKHO.MACN = '" + textBox6.Text + "' AND QUANLYKHO.MADOITAC = '" + textBox7.Text + "' ", sqlConn);
                     DataTable table = new DataTable();
                     adapt.Fill(table);
                     if (table.Rows.Count >= 1)
                     {
-                        MessageBox.Show("Mã sản phẩm đã tồn tại!");
+                        MessageBox.Show("Sản phẩm đã tồn tại trong kho này!");
                     }
                     else
                     {
@@ -80,13 +96,11 @@ namespace HQT_Project
                         }
                         else
                         {
-                            cmd = new SqlCommand("insert into sanpham(masp,maloai,tenSP,mota,gia) values(@masp,@maloai,@ten,@mota,@gia)", sqlConn);
+                            string masp = textBox1.Text, maloai = textBox2.Text, tensp = textBox3.Text, mota = textBox4.Text, madt = textBox7.Text;
+                            float gia = float.Parse(textBox5.Text);
+                            int macn = int.Parse(textBox6.Text);
                             sqlConn.Open();
-                            cmd.Parameters.AddWithValue("@masp", textBox1.Text);
-                            cmd.Parameters.AddWithValue("@maloai", textBox2.Text);
-                            cmd.Parameters.AddWithValue("@ten", textBox3.Text);
-                            cmd.Parameters.AddWithValue("@mota", textBox4.Text);
-                            cmd.Parameters.AddWithValue("@gia", textBox5.Text);
+                            cmd = new SqlCommand("EXEC dbo.THEMSP '" + masp + "','" + maloai + "','" + tensp + "','" + mota + "','" + gia + "','" + madt + "','" + macn + "' ", sqlConn);
                             cmd.ExecuteNonQuery();
                             sqlConn.Close();
                             MessageBox.Show("Thêm thành công");
@@ -119,6 +133,24 @@ namespace HQT_Project
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            menudoitac capnhat = new menudoitac();
+            capnhat.ShowDialog();
+            this.Close();
         }
     }
 }

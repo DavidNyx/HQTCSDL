@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HQT_Project
 {
-    public partial class vaitro : Form
+    public partial class menukhachhang : Form
     {
-        public vaitro()
+        public menukhachhang()
         {
             InitializeComponent();
         }
@@ -20,24 +20,16 @@ namespace HQT_Project
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            menukhachhang buy = new menukhachhang();
-            buy.ShowDialog();
-            this.Close();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            doitacconfirm doitac = new doitacconfirm();
+            muahang_taohd doitac = new muahang_taohd();
             doitac.ShowDialog();
             this.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
+        private void button2_Click(object sender, EventArgs e)
+        {//xem don hang (chung voi tai xe)
             this.Hide();
-            taixeconfirm taixe = new taixeconfirm();
-            taixe.ShowDialog();
+            theodoidonhang theodoi = new theodoidonhang();
+            theodoi.ShowDialog();
             this.Close();
         }
     }

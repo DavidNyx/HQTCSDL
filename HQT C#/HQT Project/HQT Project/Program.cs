@@ -16,7 +16,7 @@ namespace HQT_Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new vaitro());
+            Application.Run(new muahang_taohd());
         }
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HQT_Project
 {
-    public partial class vaitro : Form
+    public partial class menudoitac : Form
     {
-        public vaitro()
+        public menudoitac()
         {
             InitializeComponent();
         }
@@ -20,24 +20,24 @@ namespace HQT_Project
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            menukhachhang buy = new menukhachhang();
-            buy.ShowDialog();
+            themsp them = new themsp();
+            them.ShowDialog();
             this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            doitacconfirm doitac = new doitacconfirm();
-            doitac.ShowDialog();
+            capnhatsp capnhat = new capnhatsp();
+            capnhat.ShowDialog();
             this.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            taixeconfirm taixe = new taixeconfirm();
-            taixe.ShowDialog();
+            capnhatsl sl = new capnhatsl();
+            sl.ShowDialog();
             this.Close();
         }
     }

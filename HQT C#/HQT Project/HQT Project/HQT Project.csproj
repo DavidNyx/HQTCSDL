@@ -58,6 +58,24 @@
     <Compile Include="doitacconfirm.Designer.cs">
       <DependentUpon>doitacconfirm.cs</DependentUpon>
     </Compile>
+    <Compile Include="menudoitac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="menudoitac.Designer.cs">
+      <DependentUpon>menudoitac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="menukhachhang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="menukhachhang.Designer.cs">
+      <DependentUpon>menukhachhang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="menutaixe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="menutaixe.Designer.cs">
+      <DependentUpon>menutaixe.cs</DependentUpon>
+    </Compile>
     <Compile Include="muahang_taoghinhan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +149,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="doitacconfirm.resx">
       <DependentUpon>doitacconfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="menudoitac.resx">
+      <DependentUpon>menudoitac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="menukhachhang.resx">
+      <DependentUpon>menukhachhang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="muahang_taoghinhan.resx">
       <DependentUpon>muahang_taoghinhan.cs</DependentUpon>

@@ -25,12 +25,30 @@ namespace HQT_Project
         {
             using (SqlConnection sqlConn = new SqlConnection(connString))
             {
-                sqlConn.Open();
-                SqlDataAdapter adapt = new SqlDataAdapter("SELECT * from sanpham", sqlConn);
-                DataTable table = new DataTable();
-                adapt.Fill(table);
-                dataGridView1.DataSource = new BindingSource(table, null);
-                sqlConn.Close();
+                if (textBox6.Text != "")
+                {
+                    SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT madoitac from doitac where doitac.madoitac = '" + textBox6.Text + "' ", sqlConn);
+                    DataTable table1 = new DataTable();
+                    adapt1.Fill(table1);
+                    if (table1.Rows.Count < 1)
+                    {
+                        MessageBox.Show("Mã đối tác không tồn tại!");
+                    }
+                    else
+                    {
+                        sqlConn.Open();
+                        SqlDataAdapter adapt = new SqlDataAdapter("SELECT DISTINCT sanpham.masp, quanlykho.macn, sanpham.tensp, sanpham.maloai, sanpham.mota, sanpham.gia from sanpham, quanlykho where QUANLYKHO.MASP = SANPHAM.MASP quanlykho.madoitac = '" + textBox6.Text + "'", sqlConn);
+                        DataTable table = new DataTable();
+                        adapt.Fill(table);
+                        dataGridView1.DataSource = new BindingSource(table, null);
+                        sqlConn.Close();
+                    }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng nhập mã đối tác để được coi danh sách sản phẩm!");
+                }
             }
         }
 
@@ -66,12 +84,12 @@ namespace HQT_Project
                 if (textBox1.Text != "" || textBox2.Text != "" || textBox3.Text != "" || textBox4.Text != "" || textBox5.Text != "")
                 {
                     //CHECK
-                    SqlDataAdapter adapt = new SqlDataAdapter("SELECT SANPHAM.MASP from sanpham where MASP = '" + textBox1.Text + "' ", sqlConn);
+                    SqlDataAdapter adapt = new SqlDataAdapter("SELECT * from QUANLYKHO where QUANLYKHO.MASP = '" + textBox1.Text + "' AND QUANLYKHO.MADOITAC = '" + textBox6.Text + "' ", sqlConn);
                     DataTable table = new DataTable();
                     adapt.Fill(table);
                     if (table.Rows.Count < 1)
                     {
-                        MessageBox.Show("Mã sản phẩm không tồn tại!");
+                        MessageBox.Show("Sản phẩm không thuộc đối tác này!");
                     }
                     else
                     {
@@ -85,13 +103,10 @@ namespace HQT_Project
                         }
                         else
                         {
-                            cmd = new SqlCommand("update sanpham set masp = @masp, maloai = @maloai, tenSP = @ten, mota = @mota, gia = @gia) where masp = @masp", sqlConn);
+                            string masp = textBox1.Text, maloai = textBox2.Text, tensp = textBox3.Text, mota = textBox4.Text;
+                            float gia = float.Parse(textBox5.Text);
                             sqlConn.Open();
-                            cmd.Parameters.AddWithValue("@masp", textBox1.Text);
-                            cmd.Parameters.AddWithValue("@maloai", textBox2.Text);
-                            cmd.Parameters.AddWithValue("@ten", textBox3.Text);
-                            cmd.Parameters.AddWithValue("@mota", textBox4.Text);
-                            cmd.Parameters.AddWithValue("@gia", textBox5.Text);
+                            cmd = new SqlCommand("EXEC dbo.CAPNHATSP '" + masp + "','" + maloai + "','" + tensp + "','" + mota + "','" + gia + "'", sqlConn);
                             cmd.ExecuteNonQuery();
                             sqlConn.Close();
                             MessageBox.Show("Cập nhật thành công");
@@ -104,6 +119,59 @@ namespace HQT_Project
                     MessageBox.Show("Vui lòng điền thông tin!");
                 }
             }
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void capnhatsp_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            menudoitac capnhat = new menudoitac();
+            capnhat.ShowDialog();
+            this.Close();
         }
     }
 }
