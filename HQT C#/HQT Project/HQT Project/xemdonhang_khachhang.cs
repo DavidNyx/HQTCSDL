@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HQT_Project
 {
-    public partial class muahang_taoghinhan : Form
+    public partial class xemdonhang_khachhang : Form
     {
-        public muahang_taoghinhan()
+        public xemdonhang_khachhang()
         {
             InitializeComponent();
         }

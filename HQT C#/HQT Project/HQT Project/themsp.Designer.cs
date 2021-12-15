@@ -44,17 +44,17 @@ namespace HQT_Project
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(172, 397);
+            this.button2.Location = new System.Drawing.Point(153, 397);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(149, 29);
             this.button2.TabIndex = 39;
@@ -184,14 +184,6 @@ namespace HQT_Project
             this.label7.TabIndex = 43;
             this.label7.Text = "Mã chi nhánh";
             // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(530, 147);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(222, 20);
-            this.textBox6.TabIndex = 42;
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -220,23 +212,31 @@ namespace HQT_Project
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(48, 15);
+            this.button3.Location = new System.Drawing.Point(48, 17);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(85, 32);
+            this.button3.Size = new System.Drawing.Size(85, 29);
             this.button3.TabIndex = 45;
             this.button3.Text = "Quay lại";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(530, 151);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(222, 20);
+            this.textBox6.TabIndex = 46;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged_1);
             // 
             // themsp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox6);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.button2);
@@ -278,10 +278,10 @@ namespace HQT_Project
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox textBox6;
     }
 }

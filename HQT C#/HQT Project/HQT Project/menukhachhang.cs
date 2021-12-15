@@ -28,7 +28,7 @@ namespace HQT_Project
         private void button2_Click(object sender, EventArgs e)
         {//xem don hang (chung voi tai xe)
             this.Hide();
-            theodoidonhang theodoi = new theodoidonhang();
+            xemdonhang_khachhang theodoi = new xemdonhang_khachhang();
             theodoi.ShowDialog();
             this.Close();
         }

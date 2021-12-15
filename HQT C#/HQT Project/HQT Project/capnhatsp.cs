@@ -37,7 +37,7 @@ namespace HQT_Project
                     else
                     {
                         sqlConn.Open();
-                        SqlDataAdapter adapt = new SqlDataAdapter("SELECT DISTINCT sanpham.masp, quanlykho.macn, sanpham.tensp, sanpham.maloai, sanpham.mota, sanpham.gia from sanpham, quanlykho where QUANLYKHO.MASP = SANPHAM.MASP quanlykho.madoitac = '" + textBox6.Text + "'", sqlConn);
+                        SqlDataAdapter adapt = new SqlDataAdapter("SELECT DISTINCT quanlykho.masp, quanlykho.macn, sanpham.tensp, sanpham.maloai, sanpham.mota, sanpham.gia from sanpham, quanlykho where QUANLYKHO.MASP = SANPHAM.MASP AND quanlykho.madoitac = '" + textBox6.Text + "'", sqlConn);
                         DataTable table = new DataTable();
                         adapt.Fill(table);
                         dataGridView1.DataSource = new BindingSource(table, null);

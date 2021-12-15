@@ -76,12 +76,6 @@
     <Compile Include="menutaixe.Designer.cs">
       <DependentUpon>menutaixe.cs</DependentUpon>
     </Compile>
-    <Compile Include="muahang_taoghinhan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="muahang_taoghinhan.Designer.cs">
-      <DependentUpon>muahang_taoghinhan.cs</DependentUpon>
-    </Compile>
     <Compile Include="muahang_taohd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,17 +106,23 @@
     <Compile Include="themsp.Designer.cs">
       <DependentUpon>themsp.cs</DependentUpon>
     </Compile>
-    <Compile Include="theodoidonhang.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="theodoidonhang.Designer.cs">
-      <DependentUpon>theodoidonhang.cs</DependentUpon>
-    </Compile>
     <Compile Include="vaitro.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="vaitro.Designer.cs">
       <DependentUpon>vaitro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="xemdonhang_khachhang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="xemdonhang_khachhang.Designer.cs">
+      <DependentUpon>xemdonhang_khachhang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="xemdonhang_taixe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="xemdonhang_taixe.Designer.cs">
+      <DependentUpon>xemdonhang_taixe.cs</DependentUpon>
     </Compile>
     <Compile Include="xemhopdong.cs">
       <SubType>Form</SubType>
@@ -156,8 +156,8 @@
     <EmbeddedResource Include="menukhachhang.resx">
       <DependentUpon>menukhachhang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="muahang_taoghinhan.resx">
-      <DependentUpon>muahang_taoghinhan.cs</DependentUpon>
+    <EmbeddedResource Include="menutaixe.resx">
+      <DependentUpon>menutaixe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="muahang_taohd.resx">
       <DependentUpon>muahang_taohd.cs</DependentUpon>
@@ -174,11 +174,14 @@
     <EmbeddedResource Include="themsp.resx">
       <DependentUpon>themsp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="theodoidonhang.resx">
-      <DependentUpon>theodoidonhang.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="vaitro.resx">
       <DependentUpon>vaitro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="xemdonhang_khachhang.resx">
+      <DependentUpon>xemdonhang_khachhang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="xemdonhang_taixe.resx">
+      <DependentUpon>xemdonhang_taixe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="xemhopdong.resx">
       <DependentUpon>xemhopdong.cs</DependentUpon>

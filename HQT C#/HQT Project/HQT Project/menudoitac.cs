@@ -40,5 +40,13 @@ namespace HQT_Project
             sl.ShowDialog();
             this.Close();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            xoasp xoa = new xoasp();
+            xoa.ShowDialog();
+            this.Close();
+        }
     }
 }

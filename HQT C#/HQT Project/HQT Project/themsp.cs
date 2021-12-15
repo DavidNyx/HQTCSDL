@@ -51,7 +51,7 @@ namespace HQT_Project
                     else
                     {
                         sqlConn.Open();
-                        SqlDataAdapter adapt = new SqlDataAdapter("SELECT DISTINCT sanpham.masp, quanlykho.macn, sanpham.tensp, sanpham.maloai, sanpham.mota, sanpham.gia from sanpham, quanlykho where quanlykho.madoitac = '" + textBox7.Text + "'", sqlConn);
+                        SqlDataAdapter adapt = new SqlDataAdapter("SELECT DISTINCT QUANLYKHO.masp, quanlykho.macn, sanpham.tensp, sanpham.maloai, sanpham.mota, sanpham.gia from sanpham, quanlykho where QUANLYKHO.MASP = SANPHAM.MASP AND quanlykho.madoitac = '" + textBox7.Text + "'", sqlConn);
                         DataTable table = new DataTable();
                         adapt.Fill(table);
                         dataGridView1.DataSource = new BindingSource(table, null);
@@ -71,12 +71,12 @@ namespace HQT_Project
         }
 
         private void button1_Click_1(object sender, EventArgs e)
-        {
+        {//xet 1 san pham de o chi nhanh khac duoc kh? -> 1 sp o nhieu chi nhanh nhung cung doi tac
             using (SqlConnection sqlConn = new SqlConnection(connString))
             {
                 if (textBox1.Text != "" || textBox2.Text != "" || textBox3.Text != "" || textBox4.Text != "" || textBox5.Text != "")
                 {
-                    //CHECK
+                    //CHECK SP CO ROI HAY CHUA
                     SqlDataAdapter adapt = new SqlDataAdapter("SELECT * from QUANLYKHO where QUANLYKHO.MASP = '" + textBox1.Text + "' AND QUANLYKHO.MACN = '" + textBox6.Text + "' AND QUANLYKHO.MADOITAC = '" + textBox7.Text + "' ", sqlConn);
                     DataTable table = new DataTable();
                     adapt.Fill(table);
@@ -86,24 +86,36 @@ namespace HQT_Project
                     }
                     else
                     {
-                        //ma doi tac 
-                        SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT loaisp.maloai from loaisp where maLOAI = '" + textBox2.Text + "' ", sqlConn);
-                        DataTable table1 = new DataTable();
-                        adapt1.Fill(table1);
-                        if (table1.Rows.Count < 1)
+                        //CHECK SP CO THUOC DOI TAC DO KHONG
+                        SqlDataAdapter adapt2 = new SqlDataAdapter("SELECT QUANLYKHO.MASP from QUANLYKHO where QUANLYKHO.MASP = '" + textBox1.Text + "' AND QUANLYKHO.MADOITAC = '" + textBox7.Text + "' ", sqlConn);
+                        DataTable table2 = new DataTable();
+                        adapt2.Fill(table2);
+                        if (table2.Rows.Count < 1)
                         {
-                            MessageBox.Show("Loại sản phẩm không tồn tại!");
+                            MessageBox.Show("Sản phẩm không thuộc đối tác này!");
                         }
+                        //
                         else
                         {
-                            string masp = textBox1.Text, maloai = textBox2.Text, tensp = textBox3.Text, mota = textBox4.Text, madt = textBox7.Text;
-                            float gia = float.Parse(textBox5.Text);
-                            int macn = int.Parse(textBox6.Text);
-                            sqlConn.Open();
-                            cmd = new SqlCommand("EXEC dbo.THEMSP '" + masp + "','" + maloai + "','" + tensp + "','" + mota + "','" + gia + "','" + madt + "','" + macn + "' ", sqlConn);
-                            cmd.ExecuteNonQuery();
-                            sqlConn.Close();
-                            MessageBox.Show("Thêm thành công");
+                            //CHECK LOAI
+                            SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT loaisp.maloai from loaisp where maLOAI = '" + textBox2.Text + "' ", sqlConn);
+                            DataTable table1 = new DataTable();
+                            adapt1.Fill(table1);
+                            if (table1.Rows.Count < 1)
+                            {
+                                MessageBox.Show("Loại sản phẩm không tồn tại!");
+                            }
+                            else
+                            {
+                                string masp = textBox1.Text, maloai = textBox2.Text, tensp = textBox3.Text, mota = textBox4.Text, madt = textBox7.Text;
+                                float gia = float.Parse(textBox5.Text);
+                                int macn = int.Parse(textBox6.Text);
+                                sqlConn.Open();
+                                cmd = new SqlCommand("EXEC dbo.THEMSP '" + masp + "','" + maloai + "','" + tensp + "','" + mota + "','" + gia + "','" + madt + "','" + macn + "' ", sqlConn);
+                                cmd.ExecuteNonQuery();
+                                sqlConn.Close();
+                                MessageBox.Show("Thêm thành công");
+                            }
                         }
                     }
 
@@ -151,6 +163,16 @@ namespace HQT_Project
             menudoitac capnhat = new menudoitac();
             capnhat.ShowDialog();
             this.Close();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

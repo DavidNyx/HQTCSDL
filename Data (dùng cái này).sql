@@ -787,6 +787,16 @@ VALUES
     N'Hoàn tất', -- QTVC - nvarchar(100)
     N'Tiền mặt'  -- HTTHANHTOAN - nvarchar(20)
     ),
+(   'HD0000000005',   -- MADH - char(12)
+    'DT0000000002',   -- MADOITAC - char(12)
+    '000000000001',   -- CMND - char(12)
+    'KH0000000002',   -- MAKH - char(12)
+    3, -- SLSP - int
+    0, -- PHISP - float
+    10000, -- PHIVC - float
+    N'Hoàn tất', -- QTVC - nvarchar(100)
+    N'Tiền mặt'  -- HTTHANHTOAN - nvarchar(20)
+    ),
 (   'HD0000000002',   -- MADH - char(12)
     'DT0000000001',   -- MADOITAC - char(12)
     '000000000002',   -- CMND - char(12)
@@ -835,3 +845,4 @@ SELECT*FROM dbo.KHACHHANG
 SELECT*FROM dbo.TAIXE
 SELECT*FROM dbo.DONHANG
 SELECT*FROM dbo.GHINHAN
+

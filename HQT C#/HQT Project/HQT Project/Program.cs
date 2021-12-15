@@ -16,7 +16,7 @@ namespace HQT_Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new muahang_taohd());
+            Application.Run(new xemdonhang_taixe());
         }
     }
 }

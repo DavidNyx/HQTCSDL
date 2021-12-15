@@ -88,8 +88,7 @@ GO
 --xoa san pham
 CREATE PROC XOASP
     @MASP CHAR(12),
-	@MADT CHAR(12),
-	@MACN INT
+	@MADT CHAR(12)
 AS
 BEGIN
     BEGIN TRAN
@@ -98,11 +97,13 @@ BEGIN
             ROLLBACK TRAN
             raiserror(N'Sản phẩm không tồn tại', 16, 1)
         END
-		DELETE dbo.QUANLYKHO WHERE dbo.QUANLYKHO.MASP = @MASP AND dbo.QUANLYKHO.MADOITAC = @MADT AND dbo.QUANLYKHO.MACN = @MACN
+		DELETE dbo.QUANLYKHO WHERE dbo.QUANLYKHO.MASP = @MASP AND dbo.QUANLYKHO.MADOITAC = @MADT
         DELETE dbo.SANPHAM WHERE MASP = @MASP
     COMMIT TRAN
 END
 GO
+
+select * from quanlykho
 
 --update số lượng
 
@@ -161,7 +162,7 @@ BEGIN
 END
 GO
 
---tài xế xem đơn hàng
+--tài xế xem đơn hàng lân cận
 CREATE PROC VIEW_DONHANG
 	@CMND CHAR(12)
 AS
@@ -218,23 +219,41 @@ END
 GO
 
 --Theo dõi đơn hàng
-CREATE PROC FOLLOW_DONHANG
+-- khách hàng
+CREATE PROC FOLLOW_DONHANG_KH
+	@ID CHAR(12),
+	@MADH CHAR(12)
+AS 
+BEGIN
+	BEGIN TRAN
+		IF EXISTS (SELECT * FROM DONHANG, KHACHHANG WHERE DONHANG.MAKH = @ID AND KHACHHANG.MAKH = @ID) --nếu là khách hàng
+		BEGIN
+			SELECT * FROM GHINHAN WHERE DONHANG.MAKH = @ID AND GHINHAN.MADH = @MADH
+		END
+		ELSE
+		BEGIN
+			ROLLBACK
+			RAISERROR(N'Bạn không phải khách hàng, bạn không có quyền coi thông tin này', 16, 1)
+		END
+	COMMIT TRAN
+END
+GO
+
+--tài xế
+--coi thông tin những đơn hàng mình tiếp nhận (coi địa chỉ KD để biết nơi chạy đến lấy hàng)
+CREATE PROC FOLLOW_DONHANG_TX
 	@ID CHAR(12)
 AS 
 BEGIN
 	BEGIN TRAN
 		IF EXISTS (SELECT * FROM DONHANG, TAIXE WHERE DONHANG.CMND = @ID AND TAIXE.CMND = @ID) --nếu là tài xế
 		BEGIN
-			SELECT distinct DOITAC.DIACHIKD FROM DOITAC, DONHANG WHERE DONHANG.MADOITAC = DOITAC.MADOITAC AND DONHANG.CMND = @ID
-		END
-		ELSE IF EXISTS (SELECT * FROM DONHANG, KHACHHANG WHERE DONHANG.MAKH = @ID AND KHACHHANG.MAKH = @ID) --nếu là khách hàng
-		BEGIN
-			SELECT * FROM DONHANG, GHINHAN WHERE DONHANG.MAKH = @ID AND GHINHAN.MADH = DONHANG.MADH
+			SELECT donhang.MADH, donhang.QTVC ,DOITAC.DIACHIKD FROM DOITAC, DONHANG WHERE DONHANG.MADOITAC = DOITAC.MADOITAC AND DONHANG.CMND = @ID
 		END
 		ELSE
 		BEGIN
 			ROLLBACK
-			RAISERROR(N'Bạn không phải tài xế hoặc khách hàng, bạn không có quyền coi thông tin này', 16, 1)
+			RAISERROR(N'Bạn không phải tài xế, bạn không có quyền coi thông tin này', 16, 1)
 		END
 	COMMIT TRAN
 END
@@ -360,3 +379,5 @@ BEGIN
 	COMMIT TRAN
 END
 GO
+
+select * from GHINHAN
