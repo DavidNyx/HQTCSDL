@@ -14,7 +14,9 @@ namespace HQT_Project
     public partial class muahang_taohd : Form
     {
         string connString = @"Data Source=DESKTOP-8PV3Q0P\SQLEXPRESS;Initial Catalog=DATH1;Integrated Security=True";
-        private string madh = "DH";
+        private string madh = "HD";
+        SqlCommand cmd;
+        SqlDataAdapter adapt;
         public muahang_taohd()
         {
             InitializeComponent();
@@ -81,66 +83,6 @@ namespace HQT_Project
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //hoan thanh tao
-            using (SqlConnection sqlConn = new SqlConnection(connString))
-            {
-                sqlConn.Open();
-
-                //check
-                SqlDataAdapter adapt = new SqlDataAdapter("SELECT donhang.madh from donhang where madh = '" + textBox1.Text + "' ", sqlConn);
-                DataTable table = new DataTable();
-                adapt.Fill(table);
-                if (table.Rows.Count >= 1)
-                {
-                    MessageBox.Show("Mã đơn hàng đã tồn tại!");
-                }
-                else
-                {
-                    //ma doi tac 
-                    SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT DOITAC.madoitac from DOITAC where madoitac = '" + textBox2.Text + "' ", sqlConn);
-                    DataTable table1 = new DataTable();
-                    adapt1.Fill(table1);
-                    if (table1.Rows.Count < 1)
-                    {
-                        MessageBox.Show("Mã đối tác không tồn tại!");
-                    }
-                    else
-                    {
-                        //ma khach hang
-                        SqlDataAdapter adapt2 = new SqlDataAdapter("SELECT KHACHHANG.makh from KHACHHANG where makh = '" + textBox3.Text + "' ", sqlConn);
-                        DataTable table2 = new DataTable();
-                        adapt2.Fill(table2);
-                        if (table2.Rows.Count < 1)
-                        {
-                            MessageBox.Show("Mã khách hàng không tồn tại!");
-                        }
-                        else
-                        {
-                            //ma don hang
-                            SqlCommand cmd = new SqlCommand("insert into DONHANG (madh) values ('" + textBox1.Text + "' )", sqlConn);
-                           
-                            //ma doi tac
-                            SqlCommand cmd1 = new SqlCommand("insert into DONHANG (madoitac) values ('" + textBox2.Text + "' )", sqlConn);
-                            
-                            //ma khach hang
-                            SqlCommand cmd2 = new SqlCommand("insert into DONHANG (madoitac) values ('" + textBox3.Text + "' )", sqlConn);
-                            
-                            //Hinh thuc thanh toan
-                            SqlCommand cmd3 = new SqlCommand("insert into DONHANG (htthanhtoan) values ('" + comboBox1.SelectedItem + "' )", sqlConn);
-                            
-                            cmd.ExecuteNonQuery();
-                            cmd1.ExecuteNonQuery();
-                            cmd2.ExecuteNonQuery();
-                            cmd3.ExecuteNonQuery();
-                        }
-                    }
-                }
-                    //
-                sqlConn.Close();
-            }
-        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -199,6 +141,43 @@ namespace HQT_Project
         private void button4_Click(object sender, EventArgs e)
         {
             //ghi nhan
+            using (SqlConnection sqlConn = new SqlConnection(connString))
+            {
+                if (textBox1.Text != "" && textBox2.Text != "")
+                {
+                    SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT quanlykho.masp from quanlykho where quanlykho.madoitac = '" + textBox2.Text + "' and quanlykho.masp =  '"+textBox1.Text+"' ", sqlConn);
+                    DataTable table1 = new DataTable();
+                    adapt1.Fill(table1);
+                    if (table1.Rows.Count < 1)
+                    {
+                        MessageBox.Show("Sản phẩm không thuộc đối tác bạn chọn!");
+                    }
+                    else
+                    {
+                        SqlDataAdapter adapt2 = new SqlDataAdapter("SELECT quanlykho.slsp from quanlykho where quanlykho.madoitac = '" + textBox2.Text + "' and quanlykho.masp =  '" + textBox1.Text + "' and quanlykho.slsp >= '"+textBox4.Text+"' ", sqlConn);
+                        DataTable table2 = new DataTable();
+                        adapt2.Fill(table2);
+                        if (table2.Rows.Count < 1)
+                        {
+                            MessageBox.Show("Số lượng sản phẩm vượt quá số lượng trong kho!");
+                        }
+                        else
+                        {
+                            string masp = textBox1.Text;
+                            int slsp = int.Parse(textBox4.Text);
+                            sqlConn.Open();
+                            cmd = new SqlCommand("EXEC dbo.INSERT_GHINHAN '" + madh + "','" + masp + "','" + slsp + "' ", sqlConn);
+                            cmd.ExecuteNonQuery();
+                            sqlConn.Close();
+                            MessageBox.Show("Thêm sản phẩm vào đơn hàng thành công");
+                        }    
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng điền thông tin!");
+                }
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -206,7 +185,7 @@ namespace HQT_Project
             //tao don hang
             using (SqlConnection sqlConn = new SqlConnection(connString))
             {
-                if (textBox2.Text != "" && textBox3.Text != "")
+                if (textBox2.Text != "" && textBox3.Text != "" && comboBox1.SelectedItem != null)
                 {
                     SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT DOITAC.madoitac from DOITAC where madoitac = '" + textBox2.Text + "' ", sqlConn);
                     DataTable table1 = new DataTable();
@@ -240,15 +219,27 @@ namespace HQT_Project
                                 SqlDataAdapter adapt3 = new SqlDataAdapter("SELECT donhang.madh from donhang where donhang.madh = '" + madh + "' ", sqlConn);
                                 DataTable table3 = new DataTable();
                                 adapt3.Fill(table3);
-                                if (table3.Rows.Count < 1)
+                                if (table3.Rows.Count < 1) // neu ma don hang chua ton tai
                                 {
                                     label8.Text = madh;
+                                    //them don hang moi vao db
+                                    string masp = textBox1.Text, madt = textBox2.Text, makh = textBox3.Text;
+                                    object selecteditem = comboBox1.SelectedItem;
+                                    string value = selecteditem.ToString();
+                                    sqlConn.Open();
+                                    cmd = new SqlCommand("EXEC dbo.INSERT_DONHANG '" + madh + "','" + madt + "','" + makh + "','" + value +"' ", sqlConn);
+                                    cmd.ExecuteNonQuery();
+                                    sqlConn.Close();
+                                    MessageBox.Show("Tạo đơn hàng thành công");
                                     break;
                                 }
-                                //check ma don hang  
                             }
                         }    
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng điền đầy đủ thông tin!");
                 }
             }
         }

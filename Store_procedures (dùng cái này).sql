@@ -6,15 +6,18 @@ CREATE PROC THEMSP
     @MALOAI CHAR(12),
     @TENSP NVARCHAR(50),
     @MOTA NVARCHAR(250),
-    @GIA FLOAT
+    @GIA FLOAT,
+	@MADT CHAR(12),
+    @MACN INT,
+	@SL INT
 AS
 BEGIN
     BEGIN TRAN
-        IF EXISTS(SELECT * FROM dbo.SANPHAM WHERE MASP = @MASP)
-        BEGIN
-            ROLLBACK TRAN
-            raiserror(N'Sản phẩm đã tồn tại', 16, 1)
-        END
+        IF EXISTS (SELECT * FROM QUANLYKHO WHERE QUANLYKHO.MASP = @MASP AND QUANLYKHO.MACN = @MACN AND dbo.QUANLYKHO.MADOITAC = @MADT)
+		BEGIN
+			ROLLBACK
+			RAISERROR(N'Sản phẩm đã tồn tại trong kho này', 16, 1)
+		END
         IF NOT EXISTS(SELECT * FROM dbo.LOAISP WHERE MALOAI = @MALOAI)
         BEGIN
             ROLLBACK TRAN
@@ -35,16 +38,24 @@ BEGIN
             @MOTA, -- MOTA - nvarchar(250)
             @GIA  -- GIA - float
         )
+		INSERT dbo.QUANLYKHO
+        (
+			MADOITAC,
+			MACN,
+            MASP,
+			SLSP
+        )
+        VALUES
+        (   @MADT,   -- MASP - char(12)
+            @MACN,   -- MALOAI - char(12)
+            @MASP, -- TENSP - nvarchar(50)
+            1  -- SLSP - float
+        )
     COMMIT TRAN
 END
 go
 
-EXEC dbo.THEMSP @MASP = 'SP0000000001',   -- char(12)
-                @MALOAI = 'LSP000000001', -- char(12)
-                @TENSP = N'Bánh bò', -- nvarchar(50)
-                @MOTA = N'Thơm ngon.',  -- nvarchar(250)
-                @GIA = 3000.0    -- float
-GO
+SELECT * FROM QUANLYKHO
 
 --cap nhat san pham
 CREATE PROC CAPNHATSP
@@ -124,13 +135,6 @@ BEGIN
 END
 GO
 
-EXEC dbo.UPDATE_SOLUONG @MACN ='1',
-	@MASP = 'SP0000000001',   -- char(12)
-	@LUONG_TANG = 2
-GO
-
-SELECT * FROM QUANLYKHO
-GO
 --cập nhật đơn hàng
 CREATE PROC UPDATE_DONHANG
 	@MADH CHAR(12),
@@ -157,11 +161,6 @@ BEGIN
 END
 GO
 
-EXEC dbo.UPDATE_DONHANG @MADH = 'HD0000000001', 
-	@QTVC = N'Đang vận chuyển'
-
-SELECT * FROM DONHANG
-GO
 --tài xế xem đơn hàng
 CREATE PROC VIEW_DONHANG
 	@CMND CHAR(12)
@@ -176,27 +175,32 @@ BEGIN
 		declare @KV NVARCHAR(100)
 		SET @KV = (SELECT TAIXE.KHUVUCHD FROM TAIXE where taixe.CMND = @CMND)
 		declare @DC nvarchar(100)
-		DECLARE cursorProduct CURSOR FOR
-		SELECT KHACHHANG.DIACHIKH FROM KHACHHANG
-		OPEN cursorProduct
-		FETCH NEXT FROM cursorProduct     -- Đọc dòng đầu tiên
-		INTO @DC
-		WHILE @@FETCH_STATUS = 0          --vòng lặp WHILE khi đọc Cursor thành công
-		BEGIN
-			if CHARINDEX(@KV, @DC) != 0
-			BEGIN
-				SELECT DONHANG.MADH, DONHANG.MADOITAC, DONHANG.MAKH, DONHANG.PHISP, DONHANG.PHISP, DONHANG.PHIVC, DONHANG.QTVC, DONHANG.SLSP ,DONHANG.CMND, DONHANG.HTTHANHTOAN FROM DONHANG, KHACHHANG WHERE KHACHHANG.DIACHIKH = @DC and DONHANG.MAKH = KHACHHANG.MAKH
-			END
-			FETCH NEXT FROM cursorProduct -- Đọc dòng tiếp
-			INTO @DC
-		END
-		CLOSE cursorProduct              -- Đóng Cursor
-		DEALLOCATE cursorProduct  
+		SET @DC = (SELECT KHACHHANG.DIACHIKH FROM KHACHHANG)
+		
 	COMMIT TRAN
 END
 GO
-EXEC dbo.VIEW_DONHANG @CMND = '000000000001'
+
+CREATE PROC VIEW_DONHANG2
+	@CMND CHAR(12)
+AS
+BEGIN
+	BEGIN TRAN
+		IF NOT EXISTS (SELECT * FROM TAIXE WHERE TAIXE.CMND = @CMND)
+		BEGIN 
+			ROLLBACK
+			RAISERROR(N'Tài xế không tồn tại', 16, 1)
+        END
+		declare @KV NVARCHAR(100)
+		SET @KV = (SELECT TAIXE.KHUVUCHD FROM TAIXE where taixe.CMND = @CMND)
+		declare @DC nvarchar(100)
+		SET @DC = (SELECT KHACHHANG.DIACHIKH FROM KHACHHANG)
+		SELECT MADH FROM DONHANG, KHACHHANG WHERE KHACHHANG.MAKH = DONHANG.MADH AND CHARINDEX(@KV, @DC) >0
+	COMMIT TRAN
+END
 GO
+
+	
 --khách hàng xem danh sách đối tác
 CREATE PROC KHVIEW_DOITAC
 	@MADOITAC CHAR(12)
@@ -212,27 +216,7 @@ BEGIN
 	COMMIT TRAN
 END
 GO
-EXEC dbo.KHVIEW_DOITAC @MADOITAC = 'DT0000000001'
-GO
---nhân viên xem hợp đồng của đối tác
-CREATE PROC NVVIEW_HOPDONG
-	@MADOITAC CHAR(12),
-	@DATE date,
-	@HOAHONG FLOAT
-AS
-BEGIN
-	BEGIN TRAN
-		IF NOT EXISTS (SELECT * FROM DOITAC WHERE DOITAC.MADOITAC = @MADOITAC)
-		BEGIN
-			ROLLBACK
-			RAISERROR(N'Đối tác không tồn tại', 16, 1)
-		END
-		--đến đây khum bik làm hmu hmu
-	COMMIT TRAN
-END
---khong biet lam khuc cap nhat hmu hmu
 
-GO
 --Theo dõi đơn hàng
 CREATE PROC FOLLOW_DONHANG
 	@ID CHAR(12)
@@ -254,10 +238,6 @@ BEGIN
 		END
 	COMMIT TRAN
 END
-GO
-
-exec dbo.FOLLOW_DONHANG @ID = '000000000001'
-exec dbo.FOLLOW_DONHANG @ID = 'KH0000000003'
 GO
 
 --mua sản phẩm
@@ -363,7 +343,7 @@ BEGIN
 END
 GO
 
-CREATE PROC XEMHD -- nè m oke chưa
+CREATE PROC XEMHD -- nhân viên xem hợp đồng của đối tác
 	@MADT CHAR(12)
 AS
 BEGIN
@@ -380,32 +360,3 @@ BEGIN
 	COMMIT TRAN
 END
 GO
-
-EXEC dbo.INSERT_DONHANG @MADH = 'HD0000000001',        -- char(12)
-                       @MADT = 'DT0000000001',        -- char(12)
-                       @MAKH = 'KH0000000001',        -- char(12)
-                       @HTTHANHTOAN = N'Thẻ' -- nvarchar(20)
-GO
-
-EXEC dbo.INSERT_DONHANG @MADH = 'HD0000000002',        -- char(12)
-                       @MADT = 'DT0000000002',        -- char(12)
-                       @MAKH = 'KH0000000002',        -- char(12)
-                       @HTTHANHTOAN = N'Thẻ' -- nvarchar(20)
-GO
-
-EXEC dbo.INSERT_GHINHAN @MADH = 'HD0000000001',  -- char(12)
-                        @MASP = 'SP0000000001',  -- char(12)
-                        @SOLUONG = 3 -- int
-GO
-
-EXEC dbo.INSERT_GHINHAN @MADH = 'HD0000000001',  -- char(12)
-                        @MASP = 'SP0000000002',  -- char(12)
-                        @SOLUONG = 1 -- int
-GO
-
-EXEC dbo.INSERT_GHINHAN @MADH = 'HD0000000002',  -- char(12)
-                        @MASP = 'SP0000000001',  -- char(12)
-                        @SOLUONG = 100 -- int
-GO
-
-DROP PROC dbo.INSERT_GHINHAN

@@ -6,7 +6,9 @@ CREATE PROC THEMSP
     @MALOAI CHAR(12),
     @TENSP NVARCHAR(50),
     @MOTA NVARCHAR(250),
-    @GIA FLOAT
+    @GIA FLOAT,
+	@MADT CHAR(12),
+	@MACN CHAR(12)
 AS
 BEGIN
     BEGIN TRAN
@@ -35,10 +37,29 @@ BEGIN
             @MOTA, -- MOTA - nvarchar(250)
             @GIA  -- GIA - float
             )
+		INSERT dbo.quanlykho
+        (
+            MADOITAC,
+            MACN,
+			MASP,
+            SLSP
+        )
+        VALUES
+        (   @MADT,   -- MASP - char(12)
+			@MACN,
+            @MASP, -- MOTA - nvarchar(250)
+            1  -- GIA - float
+            )
     COMMIT TRAN
 END
 
-EXEC dbo.THEMSP
+EXEC dbo.THEMSP @MASP = 'SP00012345', 
+				@MALOAI = 'LSP000000001', -- char(12)
+                @TENSP = N'Bánh pía', -- nvarchar(50)
+                @MOTA = N'Thơm ngon.',  -- nvarchar(250)
+                @GIA = 3100.0,    -- float
+				@MADT = 'DT0000000002',
+				@MACN = '2'
 GO
 
 select * from sanpham
