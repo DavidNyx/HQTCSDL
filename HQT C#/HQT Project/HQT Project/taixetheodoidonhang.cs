@@ -23,6 +23,16 @@ namespace HQT_Project
 
         private void button2_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            //cmnd
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             using (SqlConnection sqlConn = new SqlConnection(connString))
             {
                 if (textBox1.Text != "")
@@ -51,11 +61,6 @@ namespace HQT_Project
                     MessageBox.Show("Vui lòng nhập thông tin tài xế để được coi danh sách sản phẩm!");
                 }
             }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            //cmnd
         }
     }
 }

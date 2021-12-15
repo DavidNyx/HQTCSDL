@@ -49,6 +49,8 @@ namespace HQT_Project
             this.button5 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -57,9 +59,9 @@ namespace HQT_Project
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(406, 54);
+            this.dataGridView1.Location = new System.Drawing.Point(406, 83);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(453, 578);
+            this.dataGridView1.Size = new System.Drawing.Size(453, 531);
             this.dataGridView1.TabIndex = 38;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -77,7 +79,7 @@ namespace HQT_Project
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(48, 287);
+            this.label3.Location = new System.Drawing.Point(48, 318);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 42;
@@ -86,7 +88,7 @@ namespace HQT_Project
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(166, 280);
+            this.textBox2.Location = new System.Drawing.Point(166, 311);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(185, 20);
             this.textBox2.TabIndex = 41;
@@ -95,7 +97,7 @@ namespace HQT_Project
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(48, 324);
+            this.label4.Location = new System.Drawing.Point(48, 355);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 13);
             this.label4.TabIndex = 44;
@@ -104,7 +106,7 @@ namespace HQT_Project
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(166, 317);
+            this.textBox3.Location = new System.Drawing.Point(166, 348);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(185, 20);
             this.textBox3.TabIndex = 43;
@@ -113,7 +115,7 @@ namespace HQT_Project
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(48, 364);
+            this.label5.Location = new System.Drawing.Point(48, 395);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 13);
             this.label5.TabIndex = 46;
@@ -122,7 +124,7 @@ namespace HQT_Project
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(558, 638);
+            this.button2.Location = new System.Drawing.Point(554, 620);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(170, 29);
             this.button2.TabIndex = 40;
@@ -133,7 +135,7 @@ namespace HQT_Project
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(166, 358);
+            this.comboBox1.Location = new System.Drawing.Point(166, 389);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(184, 21);
             this.comboBox1.TabIndex = 48;
@@ -142,7 +144,7 @@ namespace HQT_Project
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(51, 54);
+            this.dataGridView2.Location = new System.Drawing.Point(51, 83);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(299, 165);
             this.dataGridView2.TabIndex = 49;
@@ -151,7 +153,7 @@ namespace HQT_Project
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 524);
+            this.label2.Location = new System.Drawing.Point(47, 542);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 13);
             this.label2.TabIndex = 51;
@@ -159,7 +161,7 @@ namespace HQT_Project
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(165, 517);
+            this.textBox1.Location = new System.Drawing.Point(165, 535);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(185, 20);
             this.textBox1.TabIndex = 50;
@@ -168,7 +170,7 @@ namespace HQT_Project
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(47, 571);
+            this.label6.Location = new System.Drawing.Point(47, 589);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 13);
             this.label6.TabIndex = 53;
@@ -176,7 +178,7 @@ namespace HQT_Project
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(165, 564);
+            this.textBox4.Location = new System.Drawing.Point(165, 582);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(185, 20);
             this.textBox4.TabIndex = 52;
@@ -184,7 +186,7 @@ namespace HQT_Project
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(113, 232);
+            this.button3.Location = new System.Drawing.Point(113, 255);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(170, 29);
             this.button3.TabIndex = 54;
@@ -195,7 +197,7 @@ namespace HQT_Project
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(122, 480);
+            this.label7.Location = new System.Drawing.Point(122, 498);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(157, 13);
             this.label7.TabIndex = 55;
@@ -204,7 +206,7 @@ namespace HQT_Project
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(217, 602);
+            this.button4.Location = new System.Drawing.Point(217, 620);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(134, 29);
             this.button4.TabIndex = 56;
@@ -214,7 +216,7 @@ namespace HQT_Project
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(265, 424);
+            this.button5.Location = new System.Drawing.Point(265, 455);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(85, 29);
             this.button5.TabIndex = 57;
@@ -225,7 +227,7 @@ namespace HQT_Project
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(166, 398);
+            this.label8.Location = new System.Drawing.Point(166, 429);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(185, 13);
             this.label8.TabIndex = 58;
@@ -234,18 +236,41 @@ namespace HQT_Project
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(48, 398);
+            this.label9.Location = new System.Drawing.Point(48, 429);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(74, 13);
             this.label9.TabIndex = 59;
             this.label9.Text = "Mã đơn hàng:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(99, 62);
+            this.label10.Name = "label10";
+            this.label10.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label10.Size = new System.Drawing.Size(207, 13);
+            this.label10.TabIndex = 60;
+            this.label10.Text = "Danh sách các đối tác còn hạn hợp đồng";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(545, 62);
+            this.label11.Name = "label11";
+            this.label11.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label11.Size = new System.Drawing.Size(165, 13);
+            this.label11.TabIndex = 61;
+            this.label11.Text = "Danh sách sản phẩm của đối tác";
             // 
             // muahang_taohd
             // 
             this.AccessibleName = "";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 699);
+            this.ClientSize = new System.Drawing.Size(900, 688);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.button5);
@@ -297,5 +322,7 @@ namespace HQT_Project
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }

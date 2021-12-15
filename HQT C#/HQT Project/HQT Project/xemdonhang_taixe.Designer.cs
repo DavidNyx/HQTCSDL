@@ -46,9 +46,10 @@ namespace HQT_Project
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(18, 89);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 13);
+            this.label1.Size = new System.Drawing.Size(172, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Tất cả các đơn hàng đã nhận";
+            this.label1.Text = "Danh sách các đơn hàng đã nhận";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -96,22 +97,25 @@ namespace HQT_Project
             this.label3.Size = new System.Drawing.Size(151, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Danh sách đơn hàng đã nhận";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 54);
+            this.label4.Location = new System.Drawing.Point(22, 51);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 13);
+            this.label4.Size = new System.Drawing.Size(82, 13);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Nhập CMND";
+            this.label4.Text = "Nhập số CMND";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(106, 47);
+            this.textBox1.Location = new System.Drawing.Point(115, 47);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(230, 20);
+            this.textBox1.Size = new System.Drawing.Size(238, 20);
             this.textBox1.TabIndex = 8;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // xemdonhang_taixe
             // 

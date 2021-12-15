@@ -115,7 +115,7 @@ namespace HQT_Project
             using (SqlConnection sqlConn = new SqlConnection(connString))
             {
                 sqlConn.Open();
-                SqlDataAdapter adapt = new SqlDataAdapter("SELECT * from doitac", sqlConn);
+                SqlDataAdapter adapt = new SqlDataAdapter("SELECT * FROM HOPDONG, DOITAC WHERE HOPDONG.MADOITAC = DOITAC.MADOITAC AND DATEDIFF(day, GETDATE(), HOPDONG.TGHIEULUC) > 0", sqlConn);
                 DataTable table = new DataTable();
                 adapt.Fill(table);
                 dataGridView2.DataSource = new BindingSource(table, null);
@@ -143,7 +143,7 @@ namespace HQT_Project
             //ghi nhan
             using (SqlConnection sqlConn = new SqlConnection(connString))
             {
-                if (textBox1.Text != "" && textBox2.Text != "")
+                if (textBox1.Text != "" || textBox2.Text != "")
                 {
                     SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT quanlykho.masp from quanlykho where quanlykho.madoitac = '" + textBox2.Text + "' and quanlykho.masp =  '"+textBox1.Text+"' ", sqlConn);
                     DataTable table1 = new DataTable();
@@ -185,9 +185,9 @@ namespace HQT_Project
             //tao don hang
             using (SqlConnection sqlConn = new SqlConnection(connString))
             {
-                if (textBox2.Text != "" && textBox3.Text != "" && comboBox1.SelectedItem != null)
+                if (textBox2.Text != "" || textBox3.Text != "" || comboBox1.SelectedItem != null)
                 {
-                    SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT DOITAC.madoitac from DOITAC where madoitac = '" + textBox2.Text + "' ", sqlConn);
+                    SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT * FROM HOPDONG WHERE DATEDIFF(day, GETDATE(), HOPDONG.TGHIEULUC) > 0 AND HOPDONG.MADOITAC = '" + textBox2.Text + "' ", sqlConn);
                     DataTable table1 = new DataTable();
                     adapt1.Fill(table1);
                     if (table1.Rows.Count < 1)
@@ -245,6 +245,11 @@ namespace HQT_Project
         }
 
         private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
         {
 
         }
