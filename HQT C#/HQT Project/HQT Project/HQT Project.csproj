@@ -88,6 +88,12 @@
     <Compile Include="capnhatsp.Designer.cs">
       <DependentUpon>capnhatsp.cs</DependentUpon>
     </Compile>
+    <Compile Include="nhanvienxemhdconhieuluc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nhanvienxemhdconhieuluc.Designer.cs">
+      <DependentUpon>nhanvienxemhdconhieuluc.cs</DependentUpon>
+    </Compile>
     <Compile Include="taixeconfirm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="muahang_taohd.resx">
       <DependentUpon>muahang_taohd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nhanvienxemhdconhieuluc.resx">
+      <DependentUpon>nhanvienxemhdconhieuluc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="taixeconfirm.resx">
       <DependentUpon>taixeconfirm.cs</DependentUpon>

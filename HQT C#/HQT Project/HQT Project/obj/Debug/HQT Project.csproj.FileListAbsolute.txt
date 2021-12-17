@@ -58,3 +58,4 @@ D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.menukhachhan
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.menutaixe.resources
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.xemdonhang_khachhang.resources
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.xemdonhang_taixe.resources
+D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.nhanvienxemhdconhieuluc.resources

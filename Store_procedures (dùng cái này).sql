@@ -349,7 +349,7 @@ BEGIN
 END
 GO
 
-CREATE PROC XEMHD -- nhân viên xem hợp đồng của đối tác
+CREATE PROC XEMHD -- nhân viên xem hợp đồng còn hiệu lực của đối tác
 	@MADT CHAR(12)
 AS
 BEGIN
@@ -366,5 +366,3 @@ BEGIN
 	COMMIT TRAN
 END
 GO
-
-select * from GHINHAN
