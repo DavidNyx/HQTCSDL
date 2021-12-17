@@ -46,11 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="capnhatdonhang.cs">
+    <Compile Include="capnhatdonhang_doitac.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="capnhatdonhang.Designer.cs">
-      <DependentUpon>capnhatdonhang.cs</DependentUpon>
+    <Compile Include="capnhatdonhang_doitac.Designer.cs">
+      <DependentUpon>capnhatdonhang_doitac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="capnhatdonhang_taixe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="capnhatdonhang_taixe.Designer.cs">
+      <DependentUpon>capnhatdonhang_taixe.cs</DependentUpon>
     </Compile>
     <Compile Include="doitacconfirm.cs">
       <SubType>Form</SubType>
@@ -150,8 +156,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="capnhatdonhang.resx">
-      <DependentUpon>capnhatdonhang.cs</DependentUpon>
+    <EmbeddedResource Include="capnhatdonhang_doitac.resx">
+      <DependentUpon>capnhatdonhang_doitac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="capnhatdonhang_taixe.resx">
+      <DependentUpon>capnhatdonhang_taixe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="doitacconfirm.resx">
       <DependentUpon>doitacconfirm.cs</DependentUpon>

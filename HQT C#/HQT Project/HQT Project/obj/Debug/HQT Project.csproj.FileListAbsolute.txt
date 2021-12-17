@@ -37,7 +37,6 @@ D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\bin\Debug\HQT Project.exe.config
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\bin\Debug\HQT Project.exe
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\bin\Debug\HQT Project.pdb
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT Project.csproj.AssemblyReference.cache
-D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.capnhatdonhang.resources
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.muahang_taohd.resources
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.taixetheodoidonhang.resources
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.themsp.resources
@@ -59,3 +58,5 @@ D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.menutaixe.re
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.xemdonhang_khachhang.resources
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.xemdonhang_taixe.resources
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.nhanvienxemhdconhieuluc.resources
+D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.capnhatdonhang_doitac.resources
+D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.capnhatdonhang_taixe.resources

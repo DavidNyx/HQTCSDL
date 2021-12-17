@@ -70,7 +70,7 @@ namespace HQT_Project
                if (textBox2.Text != "")
                 {
                     sqlConn.Open();
-                    SqlDataAdapter adapt = new SqlDataAdapter("SELECT distinct sanpham.masp, sanpham.tensp, sanpham.maloai, sanpham.mota, sanpham.gia, quanlykho.slsp from sanpham, quanlykho where quanlykho.masp = sanpham.masp and quanlykho.madoitac = '" + textBox2.Text + "' ", sqlConn);
+                    SqlDataAdapter adapt = new SqlDataAdapter("SELECT distinct sanpham.masp, sanpham.tensp, sanpham.maloai, sanpham.mota, sanpham.gia from sanpham, quanlykho where quanlykho.masp = sanpham.masp and quanlykho.madoitac = '" + textBox2.Text + "' ", sqlConn);
                     DataTable table = new DataTable();
                     adapt.Fill(table);
                     dataGridView1.DataSource = new BindingSource(table, null);
@@ -226,8 +226,10 @@ namespace HQT_Project
                                     string masp = textBox1.Text, madt = textBox2.Text, makh = textBox3.Text;
                                     object selecteditem = comboBox1.SelectedItem;
                                     string value = selecteditem.ToString();
+                                    /*byte[] utf8Bytes = Encoding.UTF8.GetBytes(value);
+                                    String str1 = Encoding.Unicode.GetString(utf8Bytes);*/
                                     sqlConn.Open();
-                                    cmd = new SqlCommand("EXEC dbo.INSERT_DONHANG '" + madh + "','" + madt + "','" + makh + "','" + value +"' ", sqlConn);
+                                    cmd = new SqlCommand("EXEC dbo.INSERT_DONHANG '" + madh + "','" + madt + "','" + makh + "', N'" + value +"' ", sqlConn);
                                     cmd.ExecuteNonQuery();
                                     sqlConn.Close();
                                     MessageBox.Show("Tạo đơn hàng thành công");

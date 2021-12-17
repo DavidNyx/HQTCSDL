@@ -111,7 +111,7 @@ namespace HQT_Project
                                 float gia = float.Parse(textBox5.Text);
                                 int macn = int.Parse(textBox6.Text);
                                 sqlConn.Open();
-                                cmd = new SqlCommand("EXEC dbo.THEMSP '" + masp + "','" + maloai + "','" + tensp + "','" + mota + "','" + gia + "','" + madt + "','" + macn + "' ", sqlConn);
+                                cmd = new SqlCommand("EXEC dbo.THEMSP '" + masp + "','" + maloai + "', N'" + tensp + "', N'" + mota + "','" + gia + "','" + madt + "','" + macn + "' ", sqlConn);
                                 cmd.ExecuteNonQuery();
                                 sqlConn.Close();
                                 MessageBox.Show("Thêm thành công");

@@ -106,7 +106,7 @@ namespace HQT_Project
                             string masp = textBox1.Text, maloai = textBox2.Text, tensp = textBox3.Text, mota = textBox4.Text;
                             float gia = float.Parse(textBox5.Text);
                             sqlConn.Open();
-                            cmd = new SqlCommand("EXEC dbo.CAPNHATSP '" + masp + "','" + maloai + "','" + tensp + "','" + mota + "','" + gia + "'", sqlConn);
+                            cmd = new SqlCommand("EXEC dbo.CAPNHATSP '" + masp + "','" + maloai + "', N'" + tensp + "', N'" + mota + "','" + gia + "'", sqlConn);
                             cmd.ExecuteNonQuery();
                             sqlConn.Close();
                             MessageBox.Show("Cập nhật thành công");
