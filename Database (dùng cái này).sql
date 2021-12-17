@@ -12,9 +12,9 @@ go
 /* Table: TAIKHOAN                                              */
 /*==============================================================*/
 create table TAIKHOAN (
-   USERNAME             char(16)             not null,
-   PASS                 char(20)             not null,
-   USER_ROLE            char(16)			null,
+   USERNAME             varchar(16)             not null,
+   PASS                 varchar(20)             not null,
+   USER_ROLE            varchar(16)			null,
    USER_STATUS          bit					not null default 0,
    constraint PK_TAIKHOAN primary key (USERNAME)
 )
