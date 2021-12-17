@@ -11,10 +11,11 @@ go
 /*==============================================================*/
 /* Table: TAIKHOAN                                              */
 /*==============================================================*/
+
 create table TAIKHOAN (
    USERNAME             varchar(16)             not null,
    PASS                 varchar(20)             not null,
-   USER_ROLE            varchar(16)			null,
+   USER_ROLE            nvarchar(16)			null,
    USER_STATUS          bit					not null default 0,
    constraint PK_TAIKHOAN primary key (USERNAME)
 )
@@ -47,7 +48,7 @@ create table DOITAC (
    DIACHIKD             nvarchar(100)        null,
    SDTDOITAC            char(10)             null,
    EMAIL                varchar(50)          null,
-   USERNAME				char(16)			 not null,
+   USERNAME				varchar(16)			 not null,
    constraint PK_DOITAC primary key (MADOITAC)
 )
 go
@@ -103,7 +104,7 @@ create table KHACHHANG (
    SDTKH                char(10)             null,
    DIACHIKH             nvarchar(100)        null,
    EMAILKH              varchar(50)          null,
-   USERNAME				char(16)			 not null,
+   USERNAME				varchar(16)			 not null,
    constraint PK_KHACHHANG primary key (MAKH)
 )
 go
@@ -167,7 +168,7 @@ create table TAIXE (
    TKNGH                char(12)             null,
    SODONHANG            int                  null,
    THUNHAP              float                null,
-   USERNAME				char(16)			 not null,
+   USERNAME				varchar(16)			 not null,
    constraint PK_TAIXE primary key (CMND)
 )
 GO

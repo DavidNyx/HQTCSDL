@@ -1,6 +1,19 @@
 ﻿USE DATH1
 GO
 
+INSERT TAIKHOAN(USERNAME, PASS, USER_ROLE)
+VALUES
+	('dnx2461', '2461', N'Nhân viên'),
+	('nv1', '12345', N'Nhân viên'),
+	('nv2', '45678', N'Nhân viên'),
+	('kh1', '12345', N'Khách hàng'),
+	('kh2', '45678', 'Khách hàng'),
+	('tx1', '12345', N'Tài xế'),
+	('tx2', '45678', N'Tài xế'),
+	('dt1', '12345', N'Đối tác'),
+	('dt2', '45678', N'Đối tác'),
+	('dt3', '67890', N'Đối tác')
+
 INSERT dbo.LOAISP
 (
     MALOAI,
@@ -269,7 +282,8 @@ INSERT dbo.DOITAC
     SLHANGNGAY,
     DIACHIKD,
     SDTDOITAC,
-    EMAIL
+    EMAIL,
+	USERNAME
 )
 VALUES
 (   'DT0000000001',   -- MADOITAC - char(12)
@@ -281,7 +295,8 @@ VALUES
     0, -- SLHANGNGAY - int
     N'1, Lê Lai', -- DIACHIKD - nvarchar(100)
     '0123456789', -- SDTDOITAC - char(10)
-    'nva@gmail.com'  -- EMAIL - varchar(50)
+    'nva@gmail.com',  -- EMAIL - varchar(50)
+	'dt1'
     ),
 (   'DT0000000002',   -- MADOITAC - char(12)
     N'Đối tác B', -- TENDOITAC - nvarchar(50)
@@ -292,7 +307,8 @@ VALUES
     0, -- SLHANGNGAY - int
     N'1, Đại La', -- DIACHIKD - nvarchar(100)
     '1234567890', -- SDTDOITAC - char(10)
-    'bnh@gmail.com'  -- EMAIL - varchar(50)
+    'bnh@gmail.com',  -- EMAIL - varchar(50)
+	'dt2'
     ),
 (   'DT0000000003',   -- MADOITAC - char(12)
     N'Đối tác D', -- TENDOITAC - nvarchar(50)
@@ -303,7 +319,8 @@ VALUES
     0, -- SLHANGNGAY - int
     N'60, Pasteur', -- DIACHIKD - nvarchar(100)
     '0987654321', -- SDTDOITAC - char(10)
-    'tranD@gmail.com'  -- EMAIL - varchar(50)
+    'tranD@gmail.com',  -- EMAIL - varchar(50)
+	'dt3'
     )
 
 INSERT dbo.HOPDONG
@@ -711,20 +728,23 @@ INSERT dbo.KHACHHANG
     HOTENKH,
     SDTKH,
     DIACHIKH,
-    EMAILKH
+    EMAILKH,
+	USERNAME
 )
 VALUES
 (   'KH0000000001',   -- MAKH - char(12)
     N'Ngyễn X', -- HOTENKH - nvarchar(50)
     '0000000000', -- SDTKH - char(10)
     N'1, Ngyễn Tất Thành, quận 4, HCM', -- DIACHIKH - nvarchar(100)
-    'x@gmail.com'  -- EMAILKH - varchar(50)
+    'x@gmail.com',  -- EMAILKH - varchar(50)
+	'kh1'
     ),
 (   'KH0000000002',   -- MAKH - char(12)
     N'Lê Y', -- HOTENKH - nvarchar(50)
     '1111111111', -- SDTKH - char(10)
     N'456, Lê Lợi, quận Gò Vấp, HCM', -- DIACHIKH - nvarchar(100)
-    'leY@gmail.com'  -- EMAILKH - varchar(50)
+    'leY@gmail.com',  -- EMAILKH - varchar(50)
+	'kh2'
     )
 
 INSERT dbo.TAIXE
@@ -738,7 +758,8 @@ INSERT dbo.TAIXE
     EMAILTAIXE,
     TKNGH,
     SODONHANG,
-    THUNHAP
+    THUNHAP,
+	USERNAME
 )
 VALUES
 (   '000000000001',   -- CMND - char(12)
@@ -750,7 +771,8 @@ VALUES
     'TH@gmail.com', -- EMAILTAIXE - varchar(50)
     'xxxx00000001', -- TKNGH - char(12)
     0, -- SODONHANG - int
-    0  -- THUNHAP - float
+    0,  -- THUNHAP - float
+	'tx1'
     ),
 (   '000000000002',   -- CMND - char(12)
     N'Lê I', -- HOTEN - nvarchar(50)
@@ -761,7 +783,8 @@ VALUES
     'lei@gmail.com', -- EMAILTAIXE - varchar(50)
     'xxxx00000002', -- TKNGH - char(12)
     0, -- SODONHANG - int
-    0  -- THUNHAP - float
+    0,  -- THUNHAP - float
+	'tx2'
     )
 
 INSERT dbo.DONHANG
@@ -827,14 +850,6 @@ VALUES
     'HD0000000002',  -- MADH - char(12)
     4 -- SL - int
     )
-
-DELETE dbo.QUANLYKHO
-WHERE MADOITAC NOT LIKE 'DT0000000001' AND MASP = 'SP0000000001'
-
-INSERT TAIKHOAN(USERNAME, PASS, USER_ROLE)
-VALUES
-	('dnx2461', '12345', null),
-	('nv1', '45678', null)
 GO
 
 SELECT*FROM dbo.LOAISP
