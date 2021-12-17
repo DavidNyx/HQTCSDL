@@ -9,6 +9,18 @@ use DATH1
 go
 
 /*==============================================================*/
+/* Table: TAIKHOAN                                              */
+/*==============================================================*/
+create table TAIKHOAN (
+   USERNAME             char(16)             not null,
+   PASS                 char(20)             not null,
+   USER_ROLE            char(16)			null,
+   USER_STATUS          bit					not null default 0,
+   constraint PK_TAIKHOAN primary key (USERNAME)
+)
+go
+
+/*==============================================================*/
 /* Table: CHINHANH                                              */
 /*==============================================================*/
 create table CHINHANH (
@@ -35,6 +47,7 @@ create table DOITAC (
    DIACHIKD             nvarchar(100)        null,
    SDTDOITAC            char(10)             null,
    EMAIL                varchar(50)          null,
+   USERNAME				char(16)			 not null,
    constraint PK_DOITAC primary key (MADOITAC)
 )
 go
@@ -90,6 +103,7 @@ create table KHACHHANG (
    SDTKH                char(10)             null,
    DIACHIKH             nvarchar(100)        null,
    EMAILKH              varchar(50)          null,
+   USERNAME				char(16)			 not null,
    constraint PK_KHACHHANG primary key (MAKH)
 )
 go
@@ -153,6 +167,7 @@ create table TAIXE (
    TKNGH                char(12)             null,
    SODONHANG            int                  null,
    THUNHAP              float                null,
+   USERNAME				char(16)			 not null,
    constraint PK_TAIXE primary key (CMND)
 )
 GO
@@ -217,3 +232,17 @@ alter table SANPHAM
       references LOAISP (MALOAI)
 go
 
+alter table KHACHHANG
+	add constraint FK_KHACHHANG_TAIKHOAN foreign key (USERNAME)
+		references TAIKHOAN(USERNAME)
+go
+
+alter table DOITAC
+	add constraint FK_DOITAC_TAIKHOAN foreign key (USERNAME)
+		references TAIKHOAN(USERNAME)
+go
+
+alter table TAIXE
+	add constraint FK_TAIXE_TAIKHOAN foreign key (USERNAME)
+		references TAIKHOAN(USERNAME)
+go

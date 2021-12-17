@@ -55,7 +55,7 @@ BEGIN
 END
 go
 
-SELECT * FROM QUANLYKHO
+
 
 --cap nhat san pham
 CREATE PROC CAPNHATSP
@@ -103,7 +103,6 @@ BEGIN
 END
 GO
 
-select * from quanlykho
 
 --update số lượng
 
@@ -203,7 +202,7 @@ BEGIN
 END
 GO
 
-EXEC KHVIEW_DOITAC @MADOITAC = 'DT0000000002'
+
 
 --Theo dõi đơn hàng
 -- khách hàng
@@ -225,7 +224,7 @@ BEGIN
 	COMMIT TRAN
 END
 GO
-EXEC FOLLOW_DONHANG_KH 'KH0000000001', 'HD0000000001'
+
 --tài xế
 --coi thông tin những đơn hàng mình tiếp nhận (coi địa chỉ KD để biết nơi chạy đến lấy hàng)
 CREATE PROC FOLLOW_DONHANG_TX
@@ -246,7 +245,7 @@ BEGIN
 END
 GO
 
-EXEC dbo.FOLLOW_DONHANG_TX '000000000001'
+
 
 --mua sản phẩm
 CREATE PROC INSERT_DONHANG
@@ -370,4 +369,27 @@ BEGIN
 END
 GO
 
+<<<<<<< HEAD
 select * from donhang
+=======
+CREATE PROC DANGKY
+	@USER CHAR(16),
+	@PASS CHAR(20),
+	@ROLE CHAR(16)
+AS
+BEGIN
+	BEGIN TRAN
+		IF EXISTS (SELECT USERNAME FROM TAIKHOAN WHERE USERNAME = @USER)
+		BEGIN
+			ROLLBACK
+			RAISERROR(N'Tên tài khoản đã tồn tai', 16, 1)
+		END
+		INSERT TAIKHOAN (USERNAME, PASS, USER_ROLE)
+			VALUES(@USER,@PASS,@ROLE)
+
+	COMMIT TRAN
+END
+GO
+
+
+>>>>>>> 33a4ecc4c6c92131df2e31c51b6654dd40cb0de3
