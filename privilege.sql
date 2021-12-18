@@ -18,9 +18,11 @@ exec sp_addrole 'customer'
 exec sp_addrole 'driver'
 exec sp_addrole 'employee'
 
-exec sp_addrolemember 'adminA', 'db_securityadmin'
-
 alter role db_datareader
+add member adminA
+go
+
+alter role db_securityadmin
 add member adminA
 go
 
