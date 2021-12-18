@@ -3,6 +3,15 @@ go
 
 sp_addlogin 'adminA', 'suisui'
 create user adminA for login adminA
+go
+
+sp_addlogin 'guest','guest'
+create user guest_dky for login guest
+go
+
+alter role db_datawriter
+add member guest_dky
+go
 
 exec sp_addrole 'coop'
 exec sp_addrole 'customer'
