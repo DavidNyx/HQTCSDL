@@ -13,7 +13,6 @@ BEGIN
 		END
 		DECLARE @HIEULUC DATE
 		SET @HIEULUC = (SELECT TGHIEULUC FROM dbo.HOPDONG WHERE MADOITAC = @MADOITAC AND MATHUE = @MATHUE)
-		WAITFOR DELAY '00:00:05'
 		UPDATE dbo.HOPDONG
 		SET TGHIEULUC = @DATE, PHANTRAMHOAHONG = @HOAHONG
 		WHERE MADOITAC = @MADOITAC AND MATHUE = @MATHUE
@@ -27,7 +26,9 @@ BEGIN
 	COMMIT TRAN
 END
 GO
+
+drop proc UPDATE_HOPDONG
 EXEC dbo.UPDATE_HOPDONG @MADOITAC = 'DT0000000001',       -- char(12)
                         @MATHUE = 'MT0000000001',         -- char(12)
-                        @DATE = '2021-11-30', -- date
+                        @DATE = '2022-01-04', -- date
                         @HOAHONG = 4        -- float

@@ -31,9 +31,9 @@ DROP PROCEDURE dbo.CAPNHATSP
 GO
 
 EXEC dbo.CAPNHATSP @MASP = 'SP0000000001',   -- char(12)
-                @MALOAI = 'LSP000000002', -- char(12)
+                @MALOAI = 'LSP000000003', -- char(12)
                 @TENSP = N'Bánh bò', -- nvarchar(50)
                 @MOTA = N'Thơm ngon.',  -- nvarchar(250)
-                @GIA = 5000.0    -- float
+                @GIA = 1000.0    -- float
 GO
 

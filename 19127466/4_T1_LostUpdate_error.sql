@@ -1,4 +1,4 @@
-﻿CREATE PROC UPDATE_HOPDONG
+﻿CREATE PROC UPDATE_HOPDONG1
 	@MADOITAC CHAR(12),
 	@MATHUE CHAR(12),
 	@DATE DATE,
@@ -17,7 +17,6 @@ BEGIN
 		UPDATE dbo.HOPDONG
 		SET TGHIEULUC = @DATE, PHANTRAMHOAHONG = @HOAHONG
 		WHERE MADOITAC = @MADOITAC AND MATHUE = @MATHUE
-
 		IF @DATE < @HIEULUC
 		BEGIN
 			ROLLBACK
@@ -29,7 +28,7 @@ END
 GO
 
 SELECT * FROM dbo.HOPDONG
-EXEC dbo.UPDATE_HOPDONG @MADOITAC = 'DT0000000001',       -- char(12)
+EXEC dbo.UPDATE_HOPDONG1 @MADOITAC = 'DT0000000001',       -- char(12)
                         @MATHUE = 'MT0000000001',         -- char(12)
-                        @DATE = '2021-11-28', -- date
+                        @DATE = '2022-01-03', -- date
                         @HOAHONG = 6        -- float
