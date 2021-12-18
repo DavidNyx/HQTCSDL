@@ -9,7 +9,7 @@ exec sp_addrole 'customer'
 exec sp_addrole 'driver'
 exec sp_addrole 'employee'
 
-exec sp_addsrvrolemember 'adminA', 'securityadmin'
+exec sp_addrolemember 'adminA', 'db_securityadmin'
 
 alter role db_datareader
 add member adminA
