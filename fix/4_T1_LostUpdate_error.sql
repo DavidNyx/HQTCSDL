@@ -1,4 +1,4 @@
-﻿CREATE PROC UPDATE_HOPDONG1
+﻿CREATE PROC UPDATE_HOPDONG
 	@MADOITAC CHAR(12),
 	@MATHUE CHAR(12),
 	@DATE DATE,
@@ -6,7 +6,6 @@
 AS
 BEGIN
 	BEGIN TRAN
-		SET TRAN ISOLATION LEVEL READ UNCOMMITTED
 		IF NOT EXISTS (SELECT * FROM DOITAC WHERE DOITAC.MADOITAC = @MADOITAC)
 		BEGIN
 			ROLLBACK
@@ -30,9 +29,7 @@ END
 GO
 
 SELECT * FROM dbo.HOPDONG
-EXEC dbo.UPDATE_HOPDONG1 @MADOITAC = 'DT0000000001',       -- char(12)
+EXEC dbo.UPDATE_HOPDONG @MADOITAC = 'DT0000000001',       -- char(12)
                         @MATHUE = 'MT0000000001',         -- char(12)
-                        @DATE = '2022-01-03', -- date
-                        @HOAHONG = 6        -- float	
-
-DROP PROC UPDATE_HOPDONG1
+                        @DATE = '2021-11-28', -- date
+                        @HOAHONG = 6        -- float

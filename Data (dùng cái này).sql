@@ -829,6 +829,16 @@ VALUES
     20000, -- PHIVC - float
     N'Hoàn tất', -- QTVC - nvarchar(100)
     N'Thẻ'  -- HTTHANHTOAN - nvarchar(20)
+    ),
+	(   'HD0000000003',   -- MADH - char(12)
+    'DT0000000001',   -- MADOITAC - char(12)
+    '000000000001',   -- CMND - char(12)
+    'KH0000000001',   -- MAKH - char(12)
+    3, -- SLSP - int
+    0, -- PHISP - float
+    10000, -- PHIVC - float
+    N'Hoàn tất', -- QTVC - nvarchar(100)
+    N'Tiền mặt'  -- HTTHANHTOAN - nvarchar(20)
     )
 
 INSERT dbo.GHINHAN
