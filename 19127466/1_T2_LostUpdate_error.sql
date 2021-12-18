@@ -30,7 +30,7 @@ GO
 SELECT * FROM dbo.SANPHAM
 GO 
 EXEC dbo.CAPNHATSP1 @MASP = 'SP0000000001',   -- char(12)
-                @MALOAI = 'LSP000000004', -- char(12)
+                @MALOAI = 'LSP000000001', -- char(12)
                 @TENSP = N'Bánh bò', -- nvarchar(50)
                 @MOTA = N'Thơm ngon.',  -- nvarchar(250)
-                @GIA = 3000.0    -- float
+                @GIA = 5000.0    -- float
