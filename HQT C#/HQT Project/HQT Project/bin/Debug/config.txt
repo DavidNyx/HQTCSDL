@@ -1,0 +1,4 @@
+DESKTOP-8PV3Q0P\SQLEXPRESS
+DATH1
+- Cái đầu là tên server
+- Cái sau là tên database

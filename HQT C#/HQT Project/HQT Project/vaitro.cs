@@ -36,8 +36,16 @@ namespace HQT_Project
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            taixeconfirm taixe = new taixeconfirm();
+            dangky_taixe taixe = new dangky_taixe();
             taixe.ShowDialog();
+            this.Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            dangky_nhanvien nhanvien = new dangky_nhanvien();
+            nhanvien.ShowDialog();
             this.Close();
         }
     }

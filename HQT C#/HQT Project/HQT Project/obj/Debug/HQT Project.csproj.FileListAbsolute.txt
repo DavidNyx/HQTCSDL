@@ -50,7 +50,6 @@ D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT Project.csproj.Gener
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT Project.csproj.CoreCompileInputs.cache
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT Project.exe
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT Project.pdb
-D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.doitacconfirm.resources
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.taixeconfirm.resources
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.menudoitac.resources
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.menukhachhang.resources
@@ -60,3 +59,8 @@ D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.xemdonhang_t
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.nhanvienxemhdconhieuluc.resources
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.capnhatdonhang_doitac.resources
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.capnhatdonhang_taixe.resources
+D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.login.resources
+D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.dangky_nhanvien.resources
+D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.dangky_taixe.resources
+D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.quantri_admin.resources
+D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.kichhoat_admin.resources

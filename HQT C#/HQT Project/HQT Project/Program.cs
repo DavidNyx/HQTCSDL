@@ -16,7 +16,7 @@ namespace HQT_Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new capnhatdonhang_taixe());
+            Application.Run(new login());
         }
     }
 }

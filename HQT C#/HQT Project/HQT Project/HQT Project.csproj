@@ -58,11 +58,35 @@
     <Compile Include="capnhatdonhang_taixe.Designer.cs">
       <DependentUpon>capnhatdonhang_taixe.cs</DependentUpon>
     </Compile>
+    <Compile Include="dangky_nhanvien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dangky_nhanvien.Designer.cs">
+      <DependentUpon>dangky_nhanvien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dangky_taixe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dangky_taixe.Designer.cs">
+      <DependentUpon>dangky_taixe.cs</DependentUpon>
+    </Compile>
     <Compile Include="doitacconfirm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="doitacconfirm.Designer.cs">
       <DependentUpon>doitacconfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="kichhoat_admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="kichhoat_admin.Designer.cs">
+      <DependentUpon>kichhoat_admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
     </Compile>
     <Compile Include="menudoitac.cs">
       <SubType>Form</SubType>
@@ -99,6 +123,12 @@
     </Compile>
     <Compile Include="nhanvienxemhdconhieuluc.Designer.cs">
       <DependentUpon>nhanvienxemhdconhieuluc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="quantri_admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="quantri_admin.Designer.cs">
+      <DependentUpon>quantri_admin.cs</DependentUpon>
     </Compile>
     <Compile Include="taixeconfirm.cs">
       <SubType>Form</SubType>
@@ -162,8 +192,17 @@
     <EmbeddedResource Include="capnhatdonhang_taixe.resx">
       <DependentUpon>capnhatdonhang_taixe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="doitacconfirm.resx">
-      <DependentUpon>doitacconfirm.cs</DependentUpon>
+    <EmbeddedResource Include="dangky_nhanvien.resx">
+      <DependentUpon>dangky_nhanvien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dangky_taixe.resx">
+      <DependentUpon>dangky_taixe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="kichhoat_admin.resx">
+      <DependentUpon>kichhoat_admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="menudoitac.resx">
       <DependentUpon>menudoitac.cs</DependentUpon>
@@ -179,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="nhanvienxemhdconhieuluc.resx">
       <DependentUpon>nhanvienxemhdconhieuluc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="quantri_admin.resx">
+      <DependentUpon>quantri_admin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="taixeconfirm.resx">
       <DependentUpon>taixeconfirm.cs</DependentUpon>

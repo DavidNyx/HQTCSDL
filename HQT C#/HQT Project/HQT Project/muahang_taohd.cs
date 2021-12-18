@@ -13,10 +13,9 @@ namespace HQT_Project
 {
     public partial class muahang_taohd : Form
     {
-        string connString = @"Data Source=DESKTOP-8PV3Q0P\SQLEXPRESS;Initial Catalog=DATH1;Integrated Security=True";
+        //string connString = @"Data Source=DESKTOP-8PV3Q0P\SQLEXPRESS;Initial Catalog=DATH1;Integrated Security=True";
         private string madh = "HD";
         SqlCommand cmd;
-        SqlDataAdapter adapt;
         public muahang_taohd()
         {
             InitializeComponent();
@@ -65,16 +64,16 @@ namespace HQT_Project
 
         private void button2_Click(object sender, EventArgs e)
         {
-            using (SqlConnection sqlConn = new SqlConnection(connString))
+            using (nachos.sqlCon)
             {
                if (textBox2.Text != "")
                 {
-                    sqlConn.Open();
-                    SqlDataAdapter adapt = new SqlDataAdapter("SELECT distinct sanpham.masp, sanpham.tensp, sanpham.maloai, sanpham.mota, sanpham.gia from sanpham, quanlykho where quanlykho.masp = sanpham.masp and quanlykho.madoitac = '" + textBox2.Text + "' ", sqlConn);
+                    nachos.sqlCon.Open();
+                    SqlDataAdapter adapt = new SqlDataAdapter("SELECT distinct sanpham.masp, sanpham.tensp, sanpham.maloai, sanpham.mota, sanpham.gia from sanpham, quanlykho where quanlykho.masp = sanpham.masp and quanlykho.madoitac = '" + textBox2.Text + "' ", nachos.sqlCon);
                     DataTable table = new DataTable();
                     adapt.Fill(table);
                     dataGridView1.DataSource = new BindingSource(table, null);
-                    sqlConn.Close();
+                    nachos.sqlCon.Close();
                 }
                 else
                 {
@@ -112,14 +111,14 @@ namespace HQT_Project
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            using (SqlConnection sqlConn = new SqlConnection(connString))
+            using (nachos.sqlCon)
             {
-                sqlConn.Open();
-                SqlDataAdapter adapt = new SqlDataAdapter("SELECT * FROM HOPDONG, DOITAC WHERE HOPDONG.MADOITAC = DOITAC.MADOITAC AND DATEDIFF(day, GETDATE(), HOPDONG.TGHIEULUC) > 0", sqlConn);
+                nachos.sqlCon.Open();
+                SqlDataAdapter adapt = new SqlDataAdapter("SELECT * FROM HOPDONG, DOITAC WHERE HOPDONG.MADOITAC = DOITAC.MADOITAC AND DATEDIFF(day, GETDATE(), HOPDONG.TGHIEULUC) > 0", nachos.sqlCon);
                 DataTable table = new DataTable();
                 adapt.Fill(table);
                 dataGridView2.DataSource = new BindingSource(table, null);
-                sqlConn.Close();
+                nachos.sqlCon.Close();
             }
         }
 
@@ -141,11 +140,11 @@ namespace HQT_Project
         private void button4_Click(object sender, EventArgs e)
         {
             //ghi nhan
-            using (SqlConnection sqlConn = new SqlConnection(connString))
+            using (nachos.sqlCon)
             {
                 if (textBox1.Text != "" || textBox2.Text != "")
                 {
-                    SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT quanlykho.masp from quanlykho where quanlykho.madoitac = '" + textBox2.Text + "' and quanlykho.masp =  '"+textBox1.Text+"' ", sqlConn);
+                    SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT quanlykho.masp from quanlykho where quanlykho.madoitac = '" + textBox2.Text + "' and quanlykho.masp =  '"+textBox1.Text+"' ", nachos.sqlCon);
                     DataTable table1 = new DataTable();
                     adapt1.Fill(table1);
                     if (table1.Rows.Count < 1)
@@ -154,7 +153,7 @@ namespace HQT_Project
                     }
                     else
                     {
-                        SqlDataAdapter adapt2 = new SqlDataAdapter("SELECT quanlykho.slsp from quanlykho where quanlykho.madoitac = '" + textBox2.Text + "' and quanlykho.masp =  '" + textBox1.Text + "' and quanlykho.slsp >= '"+textBox4.Text+"' ", sqlConn);
+                        SqlDataAdapter adapt2 = new SqlDataAdapter("SELECT quanlykho.slsp from quanlykho where quanlykho.madoitac = '" + textBox2.Text + "' and quanlykho.masp =  '" + textBox1.Text + "' and quanlykho.slsp >= '"+textBox4.Text+"' ", nachos.sqlCon);
                         DataTable table2 = new DataTable();
                         adapt2.Fill(table2);
                         if (table2.Rows.Count < 1)
@@ -165,10 +164,10 @@ namespace HQT_Project
                         {
                             string masp = textBox1.Text;
                             int slsp = int.Parse(textBox4.Text);
-                            sqlConn.Open();
-                            cmd = new SqlCommand("EXEC dbo.INSERT_GHINHAN '" + madh + "','" + masp + "','" + slsp + "' ", sqlConn);
+                            nachos.sqlCon.Open();
+                            cmd = new SqlCommand("EXEC dbo.INSERT_GHINHAN '" + madh + "','" + masp + "','" + slsp + "' ", nachos.sqlCon);
                             cmd.ExecuteNonQuery();
-                            sqlConn.Close();
+                            nachos.sqlCon.Close();
                             MessageBox.Show("Thêm sản phẩm vào đơn hàng thành công");
                         }    
                     }
@@ -183,11 +182,11 @@ namespace HQT_Project
         private void button5_Click(object sender, EventArgs e)
         {
             //tao don hang
-            using (SqlConnection sqlConn = new SqlConnection(connString))
+            using (nachos.sqlCon)
             {
                 if (textBox2.Text != "" || textBox3.Text != "" || comboBox1.SelectedItem != null)
                 {
-                    SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT * FROM HOPDONG WHERE DATEDIFF(day, GETDATE(), HOPDONG.TGHIEULUC) > 0 AND HOPDONG.MADOITAC = '" + textBox2.Text + "' ", sqlConn);
+                    SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT * FROM HOPDONG WHERE DATEDIFF(day, GETDATE(), HOPDONG.TGHIEULUC) > 0 AND HOPDONG.MADOITAC = '" + textBox2.Text + "' ", nachos.sqlCon);
                     DataTable table1 = new DataTable();
                     adapt1.Fill(table1);
                     if (table1.Rows.Count < 1)
@@ -196,7 +195,7 @@ namespace HQT_Project
                     }
                     else
                     {
-                        SqlDataAdapter adapt2 = new SqlDataAdapter("SELECT khachhang.makh from khachhang where khachhang.makh = '" + textBox3.Text + "' ", sqlConn);
+                        SqlDataAdapter adapt2 = new SqlDataAdapter("SELECT khachhang.makh from khachhang where khachhang.makh = '" + textBox3.Text + "' ", nachos.sqlCon);
                         DataTable table2 = new DataTable();
                         adapt2.Fill(table2);
                         if (table2.Rows.Count < 1)
@@ -216,7 +215,7 @@ namespace HQT_Project
                                     int flt = random.Next(10);
                                     madh = madh + flt.ToString();
                                 }
-                                SqlDataAdapter adapt3 = new SqlDataAdapter("SELECT donhang.madh from donhang where donhang.madh = '" + madh + "' ", sqlConn);
+                                SqlDataAdapter adapt3 = new SqlDataAdapter("SELECT donhang.madh from donhang where donhang.madh = '" + madh + "' ", nachos.sqlCon);
                                 DataTable table3 = new DataTable();
                                 adapt3.Fill(table3);
                                 if (table3.Rows.Count < 1) // neu ma don hang chua ton tai
@@ -228,10 +227,10 @@ namespace HQT_Project
                                     string value = selecteditem.ToString();
                                     /*byte[] utf8Bytes = Encoding.UTF8.GetBytes(value);
                                     String str1 = Encoding.Unicode.GetString(utf8Bytes);*/
-                                    sqlConn.Open();
-                                    cmd = new SqlCommand("EXEC dbo.INSERT_DONHANG '" + madh + "','" + madt + "','" + makh + "', N'" + value +"' ", sqlConn);
+                                    nachos.sqlCon.Open();
+                                    cmd = new SqlCommand("EXEC dbo.INSERT_DONHANG '" + madh + "','" + madt + "','" + makh + "', N'" + value +"' ", nachos.sqlCon);
                                     cmd.ExecuteNonQuery();
-                                    sqlConn.Close();
+                                    nachos.sqlCon.Close();
                                     MessageBox.Show("Tạo đơn hàng thành công");
                                     break;
                                 }

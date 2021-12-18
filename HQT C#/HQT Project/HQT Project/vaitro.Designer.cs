@@ -83,6 +83,7 @@ namespace HQT_Project
             this.button4.TabIndex = 4;
             this.button4.Text = "Nhân viên";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // vaitro
             // 
