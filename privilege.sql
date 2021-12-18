@@ -16,9 +16,18 @@ go
 exec sp_addrole 'coop'
 exec sp_addrole 'customer'
 exec sp_addrole 'driver'
-exec sp_addrole 'employee'
+exec sp_addrole 'employee' --nhap role hmu hmu
+
 
 alter role db_datareader
+add member adminA
+GO
+
+alter role db_securityadmin
+add member adminA
+go
+
+alter role db_securityadmin
 add member adminA
 go
 
