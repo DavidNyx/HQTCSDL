@@ -13,9 +13,7 @@ namespace HQT_Project
 {
     public partial class xemdonhang_taixe : Form
     {
-        string connString = @"Data Source=DESKTOP-8PV3Q0P\SQLEXPRESS;Initial Catalog=DATH1;Integrated Security=True";
-        SqlCommand cmd;
-        SqlDataAdapter adapt;
+        
         public xemdonhang_taixe()
         {
             InitializeComponent();
@@ -23,11 +21,11 @@ namespace HQT_Project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (SqlConnection sqlConn = new SqlConnection(connString))
-            {
-                if (textBox1.Text != "")
+            string connString = @"Data Source=" + nachos.servername + ";Initial Catalog=" + nachos.dbname + ";Integrated Security=True;" + "UID=" + nachos.username.Trim() + "password=" + nachos.password.Trim();
+            nachos.sqlCon = new SqlConnection(connString);
+            if (textBox1.Text != "")
                 {
-                    SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT cmnd from taixe where taixe.cmnd = '" + textBox1.Text + "' ", sqlConn);
+                    SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT cmnd from taixe where taixe.cmnd = '" + textBox1.Text + "' ", nachos.sqlCon);
                     DataTable table1 = new DataTable();
                     adapt1.Fill(table1);
                     if (table1.Rows.Count < 1)
@@ -36,25 +34,25 @@ namespace HQT_Project
                     }
                     else
                     {
-                        sqlConn.Open();
+                        nachos.sqlCon.Open();
                         //data 1
-                        SqlDataAdapter adapt = new SqlDataAdapter("SELECT donhang.madh, donhang.madoitac, donhang.makh, donhang.slsp, donhang.phisp, donhang.qtvc from taixe, donhang where taixe.cmnd = '" + textBox1.Text + "'", sqlConn);
+                        SqlDataAdapter adapt = new SqlDataAdapter("SELECT donhang.madh, donhang.madoitac, donhang.makh, donhang.slsp, donhang.phisp, donhang.qtvc from taixe, donhang where taixe.cmnd = '" + textBox1.Text + "'", nachos.sqlCon);
                         DataTable table = new DataTable();
                         adapt.Fill(table);
                         dataGridView1.DataSource = new BindingSource(table, null);
                         //data 2
-                        SqlDataAdapter adapt2 = new SqlDataAdapter("exec FOLLOW_DONHANG_TX '" + textBox1.Text + "'", sqlConn);
+                        SqlDataAdapter adapt2 = new SqlDataAdapter("exec FOLLOW_DONHANG_TX '" + textBox1.Text + "'", nachos.sqlCon);
                         DataTable table2 = new DataTable();
                         adapt2.Fill(table2);
                         dataGridView2.DataSource = new BindingSource(table2, null);
-                        sqlConn.Close();
+                        nachos.sqlCon.Close();
                     }
                 }
                 else
                 {
                     MessageBox.Show("Vui lòng nhập số chứng minh nhân dân để được coi danh sách đơn hàng!");
                 }
-            }
+            
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -90,6 +88,14 @@ namespace HQT_Project
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            menutaixe them = new menutaixe();
+            them.ShowDialog();
+            this.Close();
         }
     }
 }

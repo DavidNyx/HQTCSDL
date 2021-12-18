@@ -13,9 +13,9 @@ namespace HQT_Project
 {
     public partial class capnhatsl : Form
     {
-        string connString = @"Data Source=DESKTOP-8PV3Q0P\SQLEXPRESS;Initial Catalog=DATH1;Integrated Security=True";
+        //string connString = @"Data Source=DESKTOP-8PV3Q0P\SQLEXPRESS;Initial Catalog=DATH1;Integrated Security=True";
         SqlCommand cmd;
-        SqlDataAdapter adapt;
+        //SqlDataAdapter adapt;
         public capnhatsl()
         {
             InitializeComponent();
@@ -28,11 +28,11 @@ namespace HQT_Project
 
         private void button2_Click(object sender, EventArgs e)
         {
-            using (SqlConnection sqlConn = new SqlConnection(connString))
-            {
-                if (textBox3.Text != "")
+            string connString = @"Data Source=" + nachos.servername + ";Initial Catalog=" + nachos.dbname + ";Integrated Security=True;" + "UID=" + nachos.username.Trim() + "password=" + nachos.password.Trim();
+            nachos.sqlCon = new SqlConnection(connString);
+            if (textBox3.Text != "")
                 {
-                    SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT madoitac from doitac where doitac.madoitac = '" + textBox3.Text + "' ", sqlConn);
+                    SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT madoitac from doitac where doitac.madoitac = '" + textBox3.Text + "' ", nachos.sqlCon);
                     DataTable table1 = new DataTable();
                     adapt1.Fill(table1);
                     if (table1.Rows.Count < 1)
@@ -41,12 +41,12 @@ namespace HQT_Project
                     }
                     else
                     {
-                        sqlConn.Open();
-                        SqlDataAdapter adapt = new SqlDataAdapter("SELECT DISTINCT sanpham.masp, quanlykho.macn, sanpham.tensp, sanpham.maloai, quanlykho.slsp , sanpham.mota, sanpham.gia from sanpham, quanlykho where quanlykho.masp = sanpham.masp AND quanlykho.madoitac = '" + textBox3.Text + "'", sqlConn);
+                        nachos.sqlCon.Open();
+                        SqlDataAdapter adapt = new SqlDataAdapter("SELECT DISTINCT sanpham.masp, quanlykho.macn, sanpham.tensp, sanpham.maloai, quanlykho.slsp , sanpham.mota, sanpham.gia from sanpham, quanlykho where quanlykho.masp = sanpham.masp AND quanlykho.madoitac = '" + textBox3.Text + "'", nachos.sqlCon);
                         DataTable table = new DataTable();
                         adapt.Fill(table);
                         dataGridView1.DataSource = new BindingSource(table, null);
-                        sqlConn.Close();
+                        nachos.sqlCon.Close();
                     }
 
                 }
@@ -54,17 +54,17 @@ namespace HQT_Project
                 {
                     MessageBox.Show("Vui lòng nhập mã đối tác để được coi danh sách sản phẩm!");
                 }
-            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (SqlConnection sqlConn = new SqlConnection(connString))
-            {
-                if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" && textBox4.Text != "")
+            string connString = @"Data Source=" + nachos.servername + ";Initial Catalog=" + nachos.dbname + ";Integrated Security=True;" + "UID=" + nachos.username.Trim() + "password=" + nachos.password.Trim();
+            nachos.sqlCon = new SqlConnection(connString);
+            if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" && textBox4.Text != "")
                 {
                     //CHECK
-                    SqlDataAdapter adapt = new SqlDataAdapter("SELECT * from QUANLYKHO where QUANLYKHO.MASP = '" + textBox1.Text + "' AND QUANLYKHO.MADOITAC = '" + textBox3.Text + "' AND QUANLYKHO.MACN = '" +textBox2.Text+ "' ", sqlConn);
+                    SqlDataAdapter adapt = new SqlDataAdapter("SELECT * from QUANLYKHO where QUANLYKHO.MASP = '" + textBox1.Text + "' AND QUANLYKHO.MADOITAC = '" + textBox3.Text + "' AND QUANLYKHO.MACN = '" +textBox2.Text+ "' ", nachos.sqlCon);
                     DataTable table = new DataTable();
                     adapt.Fill(table);
                     if (table.Rows.Count < 1)
@@ -81,10 +81,10 @@ namespace HQT_Project
                         }
                         else
                         {
-                            sqlConn.Open();
-                            cmd = new SqlCommand("EXEC dbo.UPDATE_SOLUONG '" + madt + "','" + macn + "','" + masp + "','" + sl + "'", sqlConn);
+                            nachos.sqlCon.Open();
+                            cmd = new SqlCommand("EXEC dbo.UPDATE_SOLUONG '" + madt + "','" + macn + "','" + masp + "','" + sl + "'", nachos.sqlCon);
                             cmd.ExecuteNonQuery();
-                            sqlConn.Close();
+                            nachos.sqlCon.Close();
                             MessageBox.Show("Cập nhật thành công");
                         }
                     }
@@ -94,7 +94,7 @@ namespace HQT_Project
                 {
                     MessageBox.Show("Vui lòng điền thông tin!");
                 }
-            }
+            
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)

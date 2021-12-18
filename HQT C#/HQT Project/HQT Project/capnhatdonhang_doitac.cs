@@ -13,7 +13,7 @@ namespace HQT_Project
 {
     public partial class capnhatdonhang_doitac : Form
     {
-        string connString = @"Data Source=DESKTOP-8PV3Q0P\SQLEXPRESS;Initial Catalog=DATH1;Integrated Security=True";
+        //string connString = @"Data Source=DESKTOP-8PV3Q0P\SQLEXPRESS;Initial Catalog=DATH1;Integrated Security=True";
         SqlCommand cmd;
         public capnhatdonhang_doitac()
         {
@@ -22,12 +22,12 @@ namespace HQT_Project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (SqlConnection sqlConn = new SqlConnection(connString))
-            {
-                if (textBox1.Text != "")
+            string connString = @"Data Source=" + nachos.servername + ";Initial Catalog=" + nachos.dbname + ";Integrated Security=True;" + "UID=" + nachos.username.Trim() + "password=" + nachos.password.Trim();
+            nachos.sqlCon = new SqlConnection(connString);
+            if (textBox1.Text != "")
                 {
-                    sqlConn.Open();
-                    SqlDataAdapter adapt = new SqlDataAdapter("SELECT * from donhang where donhang.QTVC is NULL and donhang.madh = '"+ textBox1.Text +"' ", sqlConn);
+                    nachos.sqlCon.Open();
+                    SqlDataAdapter adapt = new SqlDataAdapter("SELECT * from donhang where donhang.QTVC is NULL and donhang.madh = '"+ textBox1.Text +"' ", nachos.sqlCon);
                     DataTable table = new DataTable();
                     adapt.Fill(table);
                     if(table.Rows.Count < 1)
@@ -36,17 +36,17 @@ namespace HQT_Project
                     }
                     else
                     {
-                        cmd = new SqlCommand("update donhang set donhang.QTVC = N'Đã xác nhận' where donhang.madh = '" + textBox1.Text + "' " , sqlConn);
+                        cmd = new SqlCommand("update donhang set donhang.QTVC = N'Đã xác nhận' where donhang.madh = '" + textBox1.Text + "' " , nachos.sqlCon);
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Xác nhận đơn hàng thành công");
                     }    
-                    sqlConn.Close();
+                    nachos.sqlCon.Close();
                 }    
                 else
                 {
                     MessageBox.Show("Vui lòng nhập mã đơn hàng cần xác nhận!");
                 }
-            }
+            
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -81,15 +81,23 @@ namespace HQT_Project
 
         private void button2_Click(object sender, EventArgs e)
         {
-            using (SqlConnection sqlConn = new SqlConnection(connString))
-            {
-                sqlConn.Open();
-                SqlDataAdapter adapt = new SqlDataAdapter("SELECT donhang.madh, donhang.makh, donhang.htthanhtoan from donhang where donhang.QTVC is NULL", sqlConn);
+            string connString = @"Data Source=" + nachos.servername + ";Initial Catalog=" + nachos.dbname + ";Integrated Security=True;" + "UID=" + nachos.username.Trim() + "password=" + nachos.password.Trim();
+            nachos.sqlCon = new SqlConnection(connString);
+            nachos.sqlCon.Open();
+                SqlDataAdapter adapt = new SqlDataAdapter("SELECT donhang.madh, donhang.makh, donhang.htthanhtoan from donhang where donhang.QTVC is NULL", nachos.sqlCon);
                 DataTable table = new DataTable();
                 adapt.Fill(table);
                 dataGridView1.DataSource = new BindingSource(table, null);
-                sqlConn.Close();
-            }
+                nachos.sqlCon.Close();
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            menudoitac them = new menudoitac();
+            them.ShowDialog();
+            this.Close();
         }
     }
 }

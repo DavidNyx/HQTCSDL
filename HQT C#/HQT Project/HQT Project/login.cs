@@ -56,10 +56,58 @@ namespace HQT_Project
                 {
                     nachos.username = textBox2.Text;
                     nachos.password = textBox1.Text;
-                    this.Hide();
-                    quantri_admin them = new quantri_admin();
-                    them.ShowDialog();
-                    this.Close(); 
+                    //xet role de phan trang
+                    //nhan vien
+                    SqlDataAdapter adapt2 = new SqlDataAdapter("SELECT * FROM taikhoan WHERE user_role = N'Nhân viên' and username= '" + textBox2.Text + "' and pass='" + textBox1.Text + "' ", nachos.sqlCon);
+                    DataTable table2 = new DataTable();
+                    adapt2.Fill(table2);
+                    if (table2.Rows.Count >= 1) // neu la nhan vien 
+                    {
+                        this.Hide();
+                        menunhanvien them = new menunhanvien();
+                        them.ShowDialog();
+                        this.Close();
+                    }
+                    //tai xe
+                    SqlDataAdapter adapt3 = new SqlDataAdapter("SELECT * FROM taikhoan WHERE user_role = N'Tài xế' and username= '" + textBox2.Text + "' and pass='" + textBox1.Text + "' ", nachos.sqlCon);
+                    DataTable table3 = new DataTable();
+                    adapt3.Fill(table3);
+                    if (table3.Rows.Count >= 1) // neu la nhan vien 
+                    {
+                        this.Hide();
+                        menutaixe them = new menutaixe();
+                        them.ShowDialog();
+                        this.Close();
+                    }
+                    //doitac
+                    SqlDataAdapter adapt4 = new SqlDataAdapter("SELECT * FROM taikhoan WHERE user_role = N'Đối tác' and username= '" + textBox2.Text + "' and pass='" + textBox1.Text + "' ", nachos.sqlCon);
+                    DataTable table4 = new DataTable();
+                    adapt4.Fill(table4);
+                    if (table4.Rows.Count >= 1) // neu la nhan vien 
+                    {
+                        this.Hide();
+                        menudoitac them = new menudoitac();
+                        them.ShowDialog();
+                        this.Close();
+                    }
+                    //khach hang
+                    SqlDataAdapter adapt5 = new SqlDataAdapter("SELECT * FROM taikhoan WHERE user_role = N'Khách hàng' and username= '" + textBox2.Text + "' and pass='" + textBox1.Text + "' ", nachos.sqlCon);
+                    DataTable table5 = new DataTable();
+                    adapt5.Fill(table5);
+                    if (table5.Rows.Count >= 1) // neu la nhan vien 
+                    {
+                        this.Hide();
+                        menudoitac them = new menudoitac();
+                        them.ShowDialog();
+                        this.Close();
+                    }
+                    else
+                    {
+                        this.Hide();
+                        menuadmin them = new menuadmin();
+                        them.ShowDialog();
+                        this.Close();
+                    }
                 }
                 //
             }

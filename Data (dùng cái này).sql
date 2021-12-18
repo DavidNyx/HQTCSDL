@@ -14,6 +14,9 @@ VALUES
 	('dt2', '45678', N'Đối tác'),
 	('dt3', '67890', N'Đối tác')
 
+INSERT TAIKHOAN(USERNAME, PASS, USER_ROLE, USER_STATUS)
+VALUES ('adminA', 'suisui', 'Admin', 1)
+
 INSERT dbo.LOAISP
 (
     MALOAI,

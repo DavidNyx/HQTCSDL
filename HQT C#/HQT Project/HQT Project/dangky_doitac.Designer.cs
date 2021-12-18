@@ -1,7 +1,7 @@
 ﻿
 namespace HQT_Project
 {
-    partial class doitacconfirm
+    partial class dangky_doitac
     {
         /// <summary>
         /// Required designer variable.

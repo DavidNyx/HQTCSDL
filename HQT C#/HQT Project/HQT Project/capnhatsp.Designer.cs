@@ -207,9 +207,9 @@ namespace HQT_Project
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(38, 20);
+            this.button3.Location = new System.Drawing.Point(38, 12);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 24);
+            this.button3.Size = new System.Drawing.Size(87, 32);
             this.button3.TabIndex = 30;
             this.button3.Text = "Quay lại";
             this.button3.UseVisualStyleBackColor = true;

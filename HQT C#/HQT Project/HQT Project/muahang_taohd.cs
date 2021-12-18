@@ -64,9 +64,10 @@ namespace HQT_Project
 
         private void button2_Click(object sender, EventArgs e)
         {
-            using (nachos.sqlCon)
-            {
-               if (textBox2.Text != "")
+
+            string connString = @"Data Source=" + nachos.servername + ";Initial Catalog=" + nachos.dbname + ";Integrated Security=True;" + "UID=" + nachos.username.Trim() + "password=" + nachos.password.Trim();
+            nachos.sqlCon = new SqlConnection(connString);
+            if (textBox2.Text != "")
                 {
                     nachos.sqlCon.Open();
                     SqlDataAdapter adapt = new SqlDataAdapter("SELECT distinct sanpham.masp, sanpham.tensp, sanpham.maloai, sanpham.mota, sanpham.gia from sanpham, quanlykho where quanlykho.masp = sanpham.masp and quanlykho.madoitac = '" + textBox2.Text + "' ", nachos.sqlCon);
@@ -79,7 +80,6 @@ namespace HQT_Project
                 {
                     MessageBox.Show("Vui lòng nhập mã đối tác để xem các sản phẩm của đối tác đó!");
                 }
-            }
         }
 
 
@@ -111,15 +111,16 @@ namespace HQT_Project
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            using (nachos.sqlCon)
-            {
-                nachos.sqlCon.Open();
+
+            string connString = @"Data Source=" + nachos.servername + ";Initial Catalog=" + nachos.dbname + ";Integrated Security=True;" + "UID=" + nachos.username.Trim() + "password=" + nachos.password.Trim();
+            nachos.sqlCon = new SqlConnection(connString);
+            nachos.sqlCon.Open();
                 SqlDataAdapter adapt = new SqlDataAdapter("SELECT * FROM HOPDONG, DOITAC WHERE HOPDONG.MADOITAC = DOITAC.MADOITAC AND DATEDIFF(day, GETDATE(), HOPDONG.TGHIEULUC) > 0", nachos.sqlCon);
                 DataTable table = new DataTable();
                 adapt.Fill(table);
                 dataGridView2.DataSource = new BindingSource(table, null);
                 nachos.sqlCon.Close();
-            }
+            
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -140,9 +141,10 @@ namespace HQT_Project
         private void button4_Click(object sender, EventArgs e)
         {
             //ghi nhan
-            using (nachos.sqlCon)
-            {
-                if (textBox1.Text != "" || textBox2.Text != "")
+
+            string connString = @"Data Source=" + nachos.servername + ";Initial Catalog=" + nachos.dbname + ";Integrated Security=True;" + "UID=" + nachos.username.Trim() + "password=" + nachos.password.Trim();
+            nachos.sqlCon = new SqlConnection(connString);
+            if (textBox1.Text != "" || textBox2.Text != "")
                 {
                     SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT quanlykho.masp from quanlykho where quanlykho.madoitac = '" + textBox2.Text + "' and quanlykho.masp =  '"+textBox1.Text+"' ", nachos.sqlCon);
                     DataTable table1 = new DataTable();
@@ -176,15 +178,16 @@ namespace HQT_Project
                 {
                     MessageBox.Show("Vui lòng điền thông tin!");
                 }
-            }
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             //tao don hang
-            using (nachos.sqlCon)
-            {
-                if (textBox2.Text != "" || textBox3.Text != "" || comboBox1.SelectedItem != null)
+
+            string connString = @"Data Source=" + nachos.servername + ";Initial Catalog=" + nachos.dbname + ";Integrated Security=True;" + "UID=" + nachos.username.Trim() + "password=" + nachos.password.Trim();
+            nachos.sqlCon = new SqlConnection(connString);
+            if (textBox2.Text != "" || textBox3.Text != "" || comboBox1.SelectedItem != null)
                 {
                     SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT * FROM HOPDONG WHERE DATEDIFF(day, GETDATE(), HOPDONG.TGHIEULUC) > 0 AND HOPDONG.MADOITAC = '" + textBox2.Text + "' ", nachos.sqlCon);
                     DataTable table1 = new DataTable();
@@ -242,7 +245,7 @@ namespace HQT_Project
                 {
                     MessageBox.Show("Vui lòng điền đầy đủ thông tin!");
                 }
-            }
+            
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -252,6 +255,15 @@ namespace HQT_Project
 
         private void label10_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            menukhachhang them = new menukhachhang();
+            them.ShowDialog();
+            this.Close();
 
         }
     }

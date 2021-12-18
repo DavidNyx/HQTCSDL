@@ -20,7 +20,7 @@ namespace HQT_Project
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            menukhachhang buy = new menukhachhang();
+            dangky_khachhang buy = new dangky_khachhang();
             buy.ShowDialog();
             this.Close();
         }
@@ -28,7 +28,7 @@ namespace HQT_Project
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            doitacconfirm doitac = new doitacconfirm();
+            dangky_doitac doitac = new dangky_doitac();
             doitac.ShowDialog();
             this.Close();
         }

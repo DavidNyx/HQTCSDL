@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HQT_Project
 {
-    public partial class doitacconfirm : Form
+    public partial class dangky_khachhang : Form
     {
-        public doitacconfirm()
+        public dangky_khachhang()
         {
             InitializeComponent();
         }
