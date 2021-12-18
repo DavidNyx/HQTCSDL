@@ -1,4 +1,4 @@
-﻿CREATE PROC CAPNHATSP1
+﻿CREATE PROC CAPNHATSP
     @MASP CHAR(12),
     @MALOAI CHAR(12),
     @TENSP NVARCHAR(50),
@@ -7,12 +7,14 @@
 AS
 BEGIN
     BEGIN TRAN
+		SET TRAN ISOLATION LEVEL REPEATABLE READ
         IF NOT EXISTS(SELECT * FROM dbo.SANPHAM WHERE MASP = @MASP)
         BEGIN
             ROLLBACK TRAN
             RAISERROR(N'Sản phẩm không tồn tại', 16, 1)
         END
 
+		WAITFOR DELAY '00:00:05'
         UPDATE dbo.SANPHAM
 		SET MALOAI = @MALOAI, TENSP = @TENSP, MOTA = @MOTA, GIA = @GIA
 		WHERE MASP = @MASP
@@ -25,12 +27,12 @@ BEGIN
     COMMIT TRAN
 END
 GO
-DROP PROCEDURE dbo.CAPNHATSP1
-GO 
-SELECT * FROM dbo.SANPHAM
-GO 
-EXEC dbo.CAPNHATSP1 @MASP = 'SP0000000001',   -- char(12)
-                @MALOAI = 'LSP000000004', -- char(12)
+
+EXEC dbo.CAPNHATSP @MASP = 'SP0000000001',   -- char(12)
+                @MALOAI = 'LSP000000003', -- char(12)
                 @TENSP = N'Bánh bò', -- nvarchar(50)
                 @MOTA = N'Thơm ngon.',  -- nvarchar(250)
-                @GIA = 3000.0    -- float
+                @GIA = 1000.0    -- float
+GO
+
+DROP PROCEDURE dbo.CAPNHATSP
