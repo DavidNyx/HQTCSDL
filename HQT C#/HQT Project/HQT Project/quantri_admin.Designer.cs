@@ -119,6 +119,7 @@ namespace HQT_Project
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(135, 20);
             this.textBox3.TabIndex = 7;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label4
             // 
@@ -135,6 +136,7 @@ namespace HQT_Project
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(135, 20);
             this.textBox4.TabIndex = 9;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // quantri_admin
             // 

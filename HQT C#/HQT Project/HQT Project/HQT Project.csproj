@@ -82,6 +82,12 @@
     <Compile Include="dangky_doitac.Designer.cs">
       <DependentUpon>dangky_doitac.cs</DependentUpon>
     </Compile>
+    <Compile Include="doitactaohopdong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="doitactaohopdong.Designer.cs">
+      <DependentUpon>doitactaohopdong.cs</DependentUpon>
+    </Compile>
     <Compile Include="kichhoat_admin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,12 @@
     </Compile>
     <Compile Include="capnhatsp.Designer.cs">
       <DependentUpon>capnhatsp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nhanvienupdatehopdong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nhanvienupdatehopdong.Designer.cs">
+      <DependentUpon>nhanvienupdatehopdong.cs</DependentUpon>
     </Compile>
     <Compile Include="nhanvienxemhdconhieuluc.cs">
       <SubType>Form</SubType>
@@ -210,6 +222,9 @@
     <EmbeddedResource Include="dangky_taixe.resx">
       <DependentUpon>dangky_taixe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="doitactaohopdong.resx">
+      <DependentUpon>doitactaohopdong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="kichhoat_admin.resx">
       <DependentUpon>kichhoat_admin.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,11 +240,17 @@
     <EmbeddedResource Include="menukhachhang.resx">
       <DependentUpon>menukhachhang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="menunhanvien.resx">
+      <DependentUpon>menunhanvien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="menutaixe.resx">
       <DependentUpon>menutaixe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="muahang_taohd.resx">
       <DependentUpon>muahang_taohd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nhanvienupdatehopdong.resx">
+      <DependentUpon>nhanvienupdatehopdong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="nhanvienxemhdconhieuluc.resx">
       <DependentUpon>nhanvienxemhdconhieuluc.cs</DependentUpon>
