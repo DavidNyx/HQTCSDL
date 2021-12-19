@@ -1,10 +1,25 @@
 ﻿use DATH1
 go
 
+--admin
 sp_addlogin 'adminA', 'suisui'
 create user adminA for login adminA
 go
 
+
+alter role db_datareader
+add member adminA
+GO
+
+alter role db_securityadmin
+add member adminA
+go
+
+alter role db_datawriter
+add member adminA
+go
+
+--guest
 sp_addlogin 'guest','guest'
 create user guest_dky for login guest
 go
@@ -18,26 +33,6 @@ exec sp_addrole 'customer'
 exec sp_addrole 'driver'
 exec sp_addrole 'employee' --nhap role hmu hmu
 
-
-alter role db_datareader
-add member adminA
-GO
-
-alter role db_securityadmin
-add member adminA
-go
-
-alter role db_securityadmin
-add member adminA
-go
-
-alter role db_securityadmin
-add member adminA
-go
-
-alter role db_datawriter
-add member adminA
-go
 
 --Đối tác
 grant insert on DOITAC to coop
