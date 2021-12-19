@@ -16,5 +16,21 @@ namespace HQT_Project
         {
             InitializeComponent();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            nhanvienupdatehopdong them = new nhanvienupdatehopdong();
+            them.ShowDialog();
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            nhanvienxemhdconhieuluc them = new nhanvienxemhdconhieuluc();
+            them.ShowDialog();
+            this.Close();
+        }
     }
 }

@@ -48,6 +48,9 @@ namespace HQT_Project
                 }
                 nachos.sqlCon.Close();
             }
+            else {
+                MessageBox.Show("Vui lòng điền đủ thông tin");
+                }
             //
         }
 
@@ -57,6 +60,25 @@ namespace HQT_Project
         }
 
         private void button2_Click(object sender, EventArgs e)
+        {
+            string connString = @"Data Source=" + nachos.servername + ";Initial Catalog=" + nachos.dbname + ";Integrated Security=True;" + "UID=" + nachos.username.Trim() + "password=" + nachos.password.Trim();
+            nachos.sqlCon = new SqlConnection(connString);
+            if (textBox2.Text != "" && textBox3.Text != "" && textBox4.Text != "")
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng điền đủ thông tin!");
+            }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
         }

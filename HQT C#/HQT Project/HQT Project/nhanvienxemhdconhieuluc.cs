@@ -20,6 +20,7 @@ namespace HQT_Project
             InitializeComponent();
             maskedTextBox1.Mask = "00/00/0000";
             maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -73,6 +74,9 @@ namespace HQT_Project
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //test
+            
+            //
             string connString = @"Data Source=" + nachos.servername + ";Initial Catalog=" + nachos.dbname + ";Integrated Security=True;" + "UID=" + nachos.username.Trim() + "password=" + nachos.password.Trim();
             nachos.sqlCon = new SqlConnection(connString);
             if (textBox2.Text != "" || textBox3.Text != "")
