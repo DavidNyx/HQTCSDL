@@ -99,6 +99,7 @@ BEGIN
             raiserror(N'Sản phẩm không tồn tại', 16, 1)
         END
 		DELETE dbo.QUANLYKHO WHERE dbo.QUANLYKHO.MASP = @MASP AND dbo.QUANLYKHO.MADOITAC = @MADT
+		DELETE dbo.GHINHAN WHERE dbo.GHINHAN.MASP = @MASP
         DELETE dbo.SANPHAM WHERE MASP = @MASP
     COMMIT TRAN
 END
