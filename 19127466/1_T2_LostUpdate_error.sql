@@ -25,10 +25,13 @@ BEGIN
     COMMIT TRAN
 END
 GO
+
 DROP PROCEDURE dbo.CAPNHATSP1
 GO 
 SELECT * FROM dbo.SANPHAM
 GO 
+
+
 EXEC dbo.CAPNHATSP1 @MASP = 'SP0000000001',   -- char(12)
                 @MALOAI = 'LSP000000001', -- char(12)
                 @TENSP = N'Bánh bò', -- nvarchar(50)
