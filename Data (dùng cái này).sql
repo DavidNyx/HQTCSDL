@@ -810,7 +810,7 @@ VALUES
     3, -- SLSP - int
     0, -- PHISP - float
     10000, -- PHIVC - float
-    N'Hoàn tất', -- QTVC - nvarchar(100)
+    N'Có hàng', -- QTVC - nvarchar(100)
     N'Tiền mặt'  -- HTTHANHTOAN - nvarchar(20)
     ),
 (   'HD0000000005',   -- MADH - char(12)

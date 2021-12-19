@@ -1,4 +1,4 @@
-﻿CREATE PROC UPDATE_HOPDONG2
+﻿CREATE PROC UPDATE_HOPDONG1
 	@MADOITAC CHAR(12),
 	@MATHUE CHAR(12),
 	@DATE DATE,
@@ -27,9 +27,9 @@ BEGIN
 	COMMIT TRAN
 END
 GO
-EXEC dbo.UPDATE_HOPDONG2 @MADOITAC = 'DT0000000001',       -- char(12)
+EXEC dbo.UPDATE_HOPDONG1 @MADOITAC = 'DT0000000001',       -- char(12)
                         @MATHUE = 'MT0000000001',         -- char(12)
                         @DATE = '2022-01-04', -- date
                         @HOAHONG = 4        -- float
 
-DROP PROC UPDATE_HOPDONG2
+DROP PROC UPDATE_HOPDONG1
