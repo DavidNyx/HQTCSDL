@@ -56,5 +56,13 @@ namespace HQT_Project
             xoa.ShowDialog();
             this.Close();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            capnhatdonhang_doitac xoa = new capnhatdonhang_doitac();
+            xoa.ShowDialog();
+            this.Close();
+        }
     }
 }

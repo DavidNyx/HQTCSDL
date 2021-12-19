@@ -67,3 +67,5 @@ D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.menuadmin.re
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.nhanvienupdatehopdong.resources
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.doitactaohopdong.resources
 D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.menunhanvien.resources
+D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.dangky_khachhang.resources
+D:\HQT\HQTCSDL\HQT C#\HQT Project\HQT Project\obj\Debug\HQT_Project.dangky_doitac.resources

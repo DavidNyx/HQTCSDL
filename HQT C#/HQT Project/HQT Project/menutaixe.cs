@@ -16,5 +16,13 @@ namespace HQT_Project
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            capnhatdonhang_taixe them = new capnhatdonhang_taixe();
+            them.ShowDialog();
+            this.Close();
+        }
     }
 }

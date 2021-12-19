@@ -216,6 +216,12 @@
     <EmbeddedResource Include="capnhatdonhang_taixe.resx">
       <DependentUpon>capnhatdonhang_taixe.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="dangky_doitac.resx">
+      <DependentUpon>dangky_doitac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dangky_khachhang.resx">
+      <DependentUpon>dangky_khachhang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dangky_nhanvien.resx">
       <DependentUpon>dangky_nhanvien.cs</DependentUpon>
     </EmbeddedResource>
