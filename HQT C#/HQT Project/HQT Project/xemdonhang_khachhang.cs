@@ -83,7 +83,7 @@ namespace HQT_Project
                         //show tat ca don hang
                         nachos.sqlCon.Open();
                         //data 1
-                        SqlDataAdapter adapt = new SqlDataAdapter("SELECT * from donhang where donhang.makh = '" + textBox1.Text + "'", nachos.sqlCon);
+                        SqlDataAdapter adapt = new SqlDataAdapter("SELECT distinct * from donhang where donhang.makh = '" + textBox1.Text + "'", nachos.sqlCon);
                         DataTable table = new DataTable();
                         adapt.Fill(table);
                         dataGridView1.DataSource = new BindingSource(table, null);

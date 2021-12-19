@@ -105,5 +105,36 @@ namespace HQT_Project
             them.ShowDialog();
             this.Close();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string connString = @"Data Source=" + nachos.servername + ";Initial Catalog=" + nachos.dbname + ";Integrated Security=True;" + "UID=" + nachos.username.Trim() + "password=" + nachos.password.Trim();
+            nachos.sqlCon = new SqlConnection(connString);
+            //
+            if (textBox1.Text != "")
+            {
+                //check ma doi tac
+                nachos.sqlCon.Open();
+                SqlDataAdapter adapt = new SqlDataAdapter("SELECT * from doitac where madoitac = '" + textBox1.Text + "' ", nachos.sqlCon);
+                DataTable table = new DataTable();
+                adapt.Fill(table);
+                if (table.Rows.Count < 1)
+                {
+                    MessageBox.Show("Đối tác không tồn tại!");
+                }
+                else
+                {
+                    SqlDataAdapter adapt2 = new SqlDataAdapter("SELECT * from hopdong where madoitac = '" + textBox1.Text + "' ", nachos.sqlCon);
+                    DataTable table2 = new DataTable();
+                    adapt2.Fill(table2);
+                    dataGridView1.DataSource = new BindingSource(table2, null);
+                    nachos.sqlCon.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập mã đối tác để được xem danh sách hợp đồng!");
+            }
+        }
     }
 }

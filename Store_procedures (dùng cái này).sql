@@ -9,8 +9,7 @@ CREATE PROC THEMSP
     @MOTA NVARCHAR(250),
     @GIA FLOAT,
 	@MADT CHAR(12),
-    @MACN INT,
-	@SL INT
+    @MACN INT
 AS
 BEGIN
     BEGIN TRAN
@@ -214,7 +213,7 @@ BEGIN
 	BEGIN TRAN
 		IF EXISTS (SELECT * FROM DONHANG, KHACHHANG WHERE DONHANG.MAKH = @ID AND KHACHHANG.MAKH = @ID) --nếu là khách hàng
 		BEGIN
-			SELECT ghinhan.masp, GHINHAN.SL, sanpham.gia from sanpham, donhang, ghinhan where ghinhan.masp = sanpham.masp AND DONHANG.MAKH = @ID AND GHINHAN.MADH = @MADH
+			SELECT DISTINCT ghinhan.masp, GHINHAN.SL, sanpham.gia from sanpham, donhang, ghinhan where ghinhan.masp = sanpham.masp AND DONHANG.MAKH = @ID AND GHINHAN.MADH = @MADH
 		END
 		ELSE
 		BEGIN

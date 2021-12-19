@@ -98,7 +98,7 @@ namespace HQT_Project
                     if (table5.Rows.Count >= 1) // neu la nhan vien 
                     {
                         this.Hide();
-                        menudoitac them = new menudoitac();
+                        menukhachhang them = new menukhachhang();
                         them.ShowDialog();
                         this.Close();
                     }
