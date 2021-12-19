@@ -1,5 +1,6 @@
 ﻿use DATH1
 GO
+
 --Thêm sản phẩm
 CREATE PROC THEMSP
     @MASP CHAR(12),

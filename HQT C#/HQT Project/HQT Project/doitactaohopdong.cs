@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.IO;
 
 namespace HQT_Project
 {
@@ -18,21 +17,7 @@ namespace HQT_Project
         public doitactaohopdong()
         {
             InitializeComponent();
-            int count = 0;
-            //tim file
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "config.txt");
-            foreach (string line in System.IO.File.ReadLines(path))
-            {
-                if (count == 0)
-                {
-                    nachos.servername = line;
-                }
-                else if (count == 1)
-                {
-                    nachos.dbname = line;
-                }
-                count++;
-            }
+            
             maskedTextBox1.Mask = "00/00/0000";
             maskedTextBox1.ValidatingType = typeof(System.DateTime);
         }
@@ -40,7 +25,7 @@ namespace HQT_Project
         private void button1_Click(object sender, EventArgs e)
         {
             //test
-            string connString = @"Data Source=" + nachos.servername + ";Initial Catalog=" + nachos.dbname + ";Integrated Security=True;" + "UID=guest password=guest";
+            string connString = @"Data Source=" + nachos.servername + ";Initial Catalog=" + nachos.dbname + ";Integrated Security=True;" + "UID=" + nachos.username.Trim() + "password=" + nachos.password.Trim();
             nachos.sqlCon = new SqlConnection(connString);
             //
             if (textBox1.Text !="" && textBox2.Text !="" && textBox5.Text != "")
@@ -67,13 +52,12 @@ namespace HQT_Project
                     else
                     {
                         //XET thoi gian
-
                         string madt = textBox1.Text, mathue = textBox2.Text;
                         int socn = int.Parse(textBox5.Text);
                         cmd = new SqlCommand("EXEC dbo.LAP_HOP_DONG '" + madt + "','" + mathue + "','" + socn + "', '" + maskedTextBox1.Text + "' ", nachos.sqlCon);
                         cmd.ExecuteNonQuery();
                         nachos.sqlCon.Close();
-                        MessageBox.Show("Cập nhật hợp đồng thành công!");
+                        MessageBox.Show("Lập hợp đồng thành công!");
                     }
                 }
                 //
@@ -112,6 +96,14 @@ namespace HQT_Project
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            menudoitac them = new menudoitac();
+            them.ShowDialog();
+            this.Close();
         }
     }
 }

@@ -17,13 +17,14 @@ namespace HQT_Project
         public kichhoat_admin()
         {
             InitializeComponent();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             string connString = @"Data Source=" + nachos.servername + ";Initial Catalog=" + nachos.dbname + ";Integrated Security=True;" + "UID=" + nachos.username.Trim() + "password=" + nachos.password.Trim();
             nachos.sqlCon = new SqlConnection(connString);
-            if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "")
+            if (textBox1.Text != "" && comboBox1.SelectedItem != null && textBox3.Text != "")
             {
                 nachos.sqlCon.Open();
                 SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT * FROM TAIKHOAN WHERE USERNAME = '" + textBox1.Text + "' and pass = '"+textBox3.Text+"' ", nachos.sqlCon);
@@ -35,11 +36,13 @@ namespace HQT_Project
                 }
                 else
                 {
+                    object selecteditem = comboBox1.SelectedItem;
+                    string value = selecteditem.ToString();
                     cmd = new SqlCommand("sp_addlogin '" + textBox1.Text + "', '"+textBox3.Text+"' ", nachos.sqlCon);
                     cmd.ExecuteNonQuery();
                     cmd = new SqlCommand("create user " + textBox1.Text + " for login " + textBox1.Text + " ", nachos.sqlCon);
                     cmd.ExecuteNonQuery();
-                    cmd = new SqlCommand("sp_addrolemember '" + textBox2.Text + "', '" + textBox1.Text + "' ", nachos.sqlCon);
+                    cmd = new SqlCommand("sp_addrolemember '" + value + "', '" + textBox1.Text + "' ", nachos.sqlCon);
                     cmd.ExecuteNonQuery();
                     cmd = new SqlCommand("update taikhoan set taikhoan.user_status = 1 where username = '" + textBox1.Text + "' ", nachos.sqlCon);
                     cmd.ExecuteNonQuery();
@@ -76,6 +79,24 @@ namespace HQT_Project
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            menuadmin them = new menuadmin();
+            them.ShowDialog();
+            this.Close();
         }
     }
 }

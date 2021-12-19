@@ -87,10 +87,10 @@ namespace HQT_Project
                     else
                     {
                         //CHECK SP CO THUOC DOI TAC DO KHONG
-                        SqlDataAdapter adapt2 = new SqlDataAdapter("SELECT QUANLYKHO.MASP from QUANLYKHO where QUANLYKHO.MASP = '" + textBox1.Text + "' AND QUANLYKHO.MADOITAC = '" + textBox7.Text + "' ", nachos.sqlCon);
+                        SqlDataAdapter adapt2 = new SqlDataAdapter("SELECT QUANLYKHO.MASP from QUANLYKHO where QUANLYKHO.MASP = '" + textBox1.Text + "' AND QUANLYKHO.MADOITAC NOT LIKE '" + textBox7.Text + "' ", nachos.sqlCon);
                         DataTable table2 = new DataTable();
                         adapt2.Fill(table2);
-                        if (table2.Rows.Count < 1)
+                        if (table2.Rows.Count >= 1)
                         {
                             MessageBox.Show("Sản phẩm không thuộc đối tác này!");
                         }

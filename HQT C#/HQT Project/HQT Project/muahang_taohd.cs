@@ -264,7 +264,6 @@ namespace HQT_Project
             menukhachhang them = new menukhachhang();
             them.ShowDialog();
             this.Close();
-
         }
     }
 }

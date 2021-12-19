@@ -54,6 +54,8 @@ namespace HQT_Project
                 {
                     cmd = new SqlCommand("insert taikhoan(USERNAME, PASS, USER_ROLE) values ('" + textBox2.Text + "','" + textBox1.Text + "', N'" + label5.Text + "' )", nachos.sqlCon);
                     cmd.ExecuteNonQuery();
+                    cmd = new SqlCommand("insert taixe(CMND, HOTEN, SDTTAIXE, DIACHITX, BIENSO, KHUVUCHD, EMAILTAIXE, TKNGH, SODONHANG, THUNHAP, USERNAME) values ('" + textBox3.Text + "', N'" + textBox9.Text + "', '" + textBox7.Text + "' , N'" + textBox10.Text + "' , '" + textBox4.Text + "' , N'" + textBox5.Text + "','" + textBox6.Text + "' , '" + textBox8.Text + "', NULL, NULL, '" + textBox2.Text + "' )", nachos.sqlCon);
+                    cmd.ExecuteNonQuery();
                     nachos.sqlCon.Close();
                     MessageBox.Show("Tạo tài khoản thành công");
                     this.Hide();
@@ -63,6 +65,46 @@ namespace HQT_Project
                 }
                 nachos.sqlCon.Close();
             }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

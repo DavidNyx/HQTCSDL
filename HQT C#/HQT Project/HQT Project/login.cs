@@ -47,6 +47,7 @@ namespace HQT_Project
                 string connString = @"Data Source=" + nachos.servername + ";Initial Catalog=" + nachos.dbname + ";Integrated Security=True;" + "UID=" + textBox2.Text.Trim() + "password=" + textBox1.Text.Trim(); ;
                 nachos.sqlCon = new SqlConnection(connString);
                 //sqlCon = nachos.sqlCon;
+                
                 //phan trang
                 //
                 SqlDataAdapter adapt1 = new SqlDataAdapter("SELECT * FROM taikhoan WHERE username= '" + textBox2.Text + "' and pass='" + textBox1.Text + "' ", nachos.sqlCon);
@@ -108,6 +109,10 @@ namespace HQT_Project
                         them.ShowDialog();
                         this.Close();
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản không tồn tại!");
                 }
                 //
             }

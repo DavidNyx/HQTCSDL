@@ -62,6 +62,10 @@ namespace HQT_Project
                     }
                     nachos.sqlCon.Close();
              }
+             else
+            {
+                MessageBox.Show("Vui lòng điền đủ thông tin!");
+            }
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
