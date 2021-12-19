@@ -45,23 +45,39 @@ grant delete on CHINHANH to coop
 grant update on CHINHANH(TENCN, DIACHICN) to coop
 grant update on DONHANG(QTVC) to coop
 grant update on QUANLYKHO(SLSP) to coop
+grant select on QUANLYKHO to coop
 grant insert on QUANLYKHO to coop
 grant delete on QUANLYKHO to coop
+grant execute on object::dbo.UPDATE_SOLUONG to coop
+grant execute on object::dbo.CAPNHATSP to coop
+grant execute on object::dbo.THEMSP to coop
+grant execute on object::dbo.XOASP to coop
+grant execute on object::dbo.UPDATE_DONHANG to coop
+
+
 -- Khách hàng
 grant insert on KHACHHANG to customer
-grant select on DOITAC(TENDOITAC) to customer
+grant select on DOITAC(MADOITAC,TENDOITAC) to customer
 grant select on SANPHAM to customer
 grant insert on DONHANG to customer
 grant select on DONHANG to customer
 grant insert on GHINHAN to customer
 grant update on GHINHAN(SL) to customer
+grant select on HOPDONG(MADT,TGHIEULUC) to customer
+grant execute on object::dbo.FOLLOW_DONHANG_KH to customer
+grant execute on object::dbo.INSERT_GHINHAN to customer
+
 --Tài xế
 grant insert on TAIXE to driver
 grant select on DONHANG to driver
 grant update on DONHANG(QTVC) to driver
-grant select on TAIXE(SODONHANG, THUNHAP) to driver
+grant select on TAIXE to driver
+grant execute on object::dbo.FOLLOW_DONHANG_TX to driver
+grant execute on object::dbo.VIEW_DONHANG to driver
+grant execute on object::dbo.UPDATE_DONHANG to driver
+
 --Nhân viên
 grant select on DOITAC to employee
 grant select on HOPDONG to employee
 grant update on HOPDONG(TGHIEULUC,PHANTRAMHOAHONG,PHIHOAHONG) to employee
-
+grant execute on object::dbo.XEMHD to employee
